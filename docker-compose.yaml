@@ -1,0 +1,14 @@
+services:
+  frontend:
+    image: tdd-mooc-exercise-5-frontend
+    build: frontend
+    command: npm run dev -- --host 0.0.0.0
+    ports:
+      - 127.0.0.1:5173:5173
+    volumes:
+      - ./frontend:/app
+      - node_modules_frontend:/app/node_modules
+    pull_policy: never
+
+volumes:
+  node_modules_frontend:
