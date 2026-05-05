@@ -1,0 +1,13 @@
+{
+  "name": "tdd-mooc-exercise-5-backend",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Ville Sirviö",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
