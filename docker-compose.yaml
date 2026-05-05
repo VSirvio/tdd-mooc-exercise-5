@@ -1,4 +1,7 @@
 services:
+  database:
+    image: mongo:8
+
   backend:
     image: tdd-mooc-exercise-5-backend
     build: backend
@@ -6,6 +9,8 @@ services:
     volumes:
       - ./backend:/app
       - node_modules_backend:/app/node_modules
+    environment:
+      DATABASE_URI: mongodb://database
     pull_policy: never
 
   frontend:
