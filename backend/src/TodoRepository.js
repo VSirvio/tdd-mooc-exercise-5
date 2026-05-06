@@ -1,9 +1,16 @@
 export class TodoRepository {
+  #todosCollection;
+
+  constructor(mongoClient) {
+    this.#todosCollection = mongoClient.db().collection('todos');
+  }
+
   fetchAll() {
     return [];
   }
 
-  create(todo) {
-    return { ...todo, id: 1 };
+  async create(todo) {
+    const result = await this.#todosCollection.insertOne(todo);
+    return { id: result.insertedId, content: todo.content };
   }
 }

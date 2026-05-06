@@ -1,10 +1,15 @@
 import { beforeAll, describe, expect, test } from 'vitest';
+import { MongoClient } from 'mongodb';
 import { TodoRepository } from '../src/TodoRepository.js';
 
+const DATABASE_URI = 'mongodb://localhost:27018/test';
+
 describe('Database', () => {
+  let mongoClient;
   let todoRepository;
   beforeAll(() => {
-    todoRepository = new TodoRepository();
+    mongoClient = new MongoClient(DATABASE_URI);
+    todoRepository = new TodoRepository(mongoClient);
   });
 
   test('returns an empty array of todos when nothing has been added yet', async () => {
@@ -25,5 +30,12 @@ describe('Database', () => {
     const todo = { content: 'Learn Rust' };
     const createdTodo = await todoRepository.create(todo);
     expect(createdTodo).toHaveProperty('id');
+  });
+
+  test('contains a created todo', async () => {
+    const todo = { content: 'Go for a walk' };
+    const createdTodo = await todoRepository.create(todo);
+    const todoInDb = await mongoClient.db().collection('todos').findOne({ _id: createdTodo.id });
+    expect(todoInDb).toEqual({ _id: createdTodo.id, ...todo });
   });
 });
