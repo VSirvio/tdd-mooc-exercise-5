@@ -6,13 +6,15 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "test": "vitest"
+    "test": "vitest",
+    "tcr": "node tcr.js"
   },
   "dependencies": {
     "express": "^5.2.1",
     "mongodb": "^7.2.0"
   },
   "devDependencies": {
+    "chokidar": "^5.0.0",
     "vitest": "^4.1.5"
   }
 }
