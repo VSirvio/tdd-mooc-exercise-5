@@ -7,5 +7,6 @@ export class DbTestHelper {
 
   async getTodoById(id) {
     const fetchedTodo = await this.#todosCollection.findOne({ _id: id });
+    return { id: fetchedTodo._id, content: fetchedTodo.content };
   }
 }
