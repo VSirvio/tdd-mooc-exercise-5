@@ -27,6 +27,13 @@ In the root directory of the project, run the command
 
 The application is then running at [http://localhost:5173](http://localhost:5173). It can be shut down with `docker compose down`
 
+## Running the backend's unit tests
+
+1. Start the test database with `docker compose -f docker-compose.testdb.yaml up -d`
+2. Go to the `backend` directory
+3. Install dependencies with `npm install`
+4. Run the tests with `npm test`
+
 ## Running the E2E tests
 
 1. Start the application
