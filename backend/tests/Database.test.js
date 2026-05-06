@@ -13,7 +13,7 @@ describe('Database', () => {
     mongoClient = new MongoClient(DATABASE_URI);
     dbTestHelper = new DbTestHelper(mongoClient);
     todoRepository = new TodoRepository(mongoClient);
-    dbTestHelper.resetDb();
+    await dbTestHelper.resetDb();
   });
 
   test('returns an empty array of todos when nothing has been added yet', async () => {
