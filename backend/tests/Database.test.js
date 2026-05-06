@@ -38,6 +38,7 @@ describe('Database', () => {
   test('contains a created todo', async () => {
     const todo = { content: 'Go for a walk' };
     const createdTodo = await todoRepository.create(todo);
+    const todoInDb = await dbTestHelper.getTodoById(createdTodo.id);
     const todoInDb2 = await dbTestHelper.getTodoById(createdTodo.id);
     expect(todoInDb2).toEqual(createdTodo);
   });
