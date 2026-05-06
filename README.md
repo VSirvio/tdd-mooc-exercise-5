@@ -4,6 +4,13 @@
 
 My solution to exercise 5 in the Test-Driven Development MOOC course. It is a simple To-Do List web application developed using Test-Driven Development.
 
+## Technologies used
+
+* **Backend:** [Express](https://expressjs.com) / JavaScript
+* **Frontend:** [React](https://react.dev) / JavaScript
+* **Database:** [MongoDB](https://www.mongodb.com)
+* **E2E tests:** [Playwright](https://playwright.dev)
+
 ## Prerequisites
 
 Install [Node.js](https://nodejs.org/en/download) and [Docker](https://www.docker.com/get-started)
