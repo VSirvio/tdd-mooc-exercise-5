@@ -5,6 +5,6 @@ export class DbTestHelper {
     this.#todosCollection = mongoClient.db().collection('todos');
   }
 
-  getTodoById() {
+  async getTodoById() {
   }
 }
