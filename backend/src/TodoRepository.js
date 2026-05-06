@@ -3,7 +3,7 @@ export class TodoRepository {
     return [];
   }
 
-  create() {
-    return { content: 'Do something' };
+  create(todo) {
+    return todo;
   }
 }

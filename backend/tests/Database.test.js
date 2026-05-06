@@ -15,5 +15,9 @@ describe('Database', () => {
     const todo = { content: 'Do something' };
     const createdTodo = await todoRepository.create(todo);
     expect(createdTodo.content).toBe(todo.content);
+
+    const todo2 = { content: 'Finish the TDD course' };
+    const createdTodo2 = await todoRepository.create(todo2);
+    expect(createdTodo2.content).toBe(todo2.content);
   });
 });
