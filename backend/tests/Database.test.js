@@ -7,6 +7,7 @@ const DATABASE_URI = 'mongodb://localhost:27018/test';
 
 describe('Database', () => {
   let mongoClient;
+  let dbTestHelper;
   let todoRepository;
   beforeAll(() => {
     mongoClient = new MongoClient(DATABASE_URI);
