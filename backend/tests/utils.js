@@ -1,4 +1,4 @@
 export class DbTestHelper {
-  constructor() {
+  constructor(mongoClient) {
   }
 }
