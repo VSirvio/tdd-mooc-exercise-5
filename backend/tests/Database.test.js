@@ -9,7 +9,7 @@ describe('Database', () => {
   let mongoClient;
   let dbTestHelper;
   let todoRepository;
-  beforeAll(() => {
+  beforeAll(async () => {
     mongoClient = new MongoClient(DATABASE_URI);
     dbTestHelper = new DbTestHelper(mongoClient);
     todoRepository = new TodoRepository(mongoClient);
