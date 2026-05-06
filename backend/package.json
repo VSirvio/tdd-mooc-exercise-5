@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "test": "vitest",
+    "test": "vitest run",
+    "autotest": "vitest watch",
     "tcr": "node tcr.js"
   },
   "dependencies": {
