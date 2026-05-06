@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, test } from 'vitest';
+import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 import { MongoClient } from 'mongodb';
 import { TodoRepository } from '../src/TodoRepository.js';
 import { DbTestHelper } from './utils.js';
