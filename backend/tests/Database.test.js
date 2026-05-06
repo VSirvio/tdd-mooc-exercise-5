@@ -17,6 +17,7 @@ describe('Database', () => {
   });
 
   afterEach(async () => {
+    await dbTestHelper.resetDb();
   });
 
   test('returns an empty array of todos when nothing has been added yet', async () => {
