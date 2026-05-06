@@ -38,7 +38,6 @@ describe('Database', () => {
   test('contains a created todo', async () => {
     const todo = { content: 'Go for a walk' };
     const createdTodo = await todoRepository.create(todo);
-    const todoInDb = await mongoClient.db().collection('todos').findOne({ _id: createdTodo.id });
     const todoInDb2 = await dbTestHelper.getTodoById(createdTodo.id);
     expect(todoInDb2).toEqual(createdTodo);
   });
