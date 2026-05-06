@@ -40,6 +40,6 @@ describe('Database', () => {
     const createdTodo = await todoRepository.create(todo);
     const todoInDb = await mongoClient.db().collection('todos').findOne({ _id: createdTodo.id });
     const todoInDb2 = await dbTestHelper.getTodoById(createdTodo.id);
-    expect(todoInDb).toEqual({ _id: createdTodo.id, ...todo });
+    expect(todoInDb2).toEqual(createdTodo);
   });
 });
