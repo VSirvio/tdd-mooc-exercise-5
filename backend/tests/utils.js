@@ -9,4 +9,7 @@ export class DbTestHelper {
     const fetchedTodo = await this.#todosCollection.findOne({ _id: id });
     return { id: fetchedTodo._id, content: fetchedTodo.content };
   }
+
+  async resetDb() {
+  }
 }
