@@ -14,5 +14,6 @@ describe('Database', () => {
   test('the "content" field of a created todo has the correct value', async () => {
     const todo = { content: 'Do something' };
     const createdTodo = await todoRepository.create(todo);
+    expect(createdTodo.content).toBe(todo.content);
   });
 });

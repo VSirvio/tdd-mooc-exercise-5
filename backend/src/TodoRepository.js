@@ -4,5 +4,6 @@ export class TodoRepository {
   }
 
   create() {
+    return { content: 'Do something' };
   }
 }
