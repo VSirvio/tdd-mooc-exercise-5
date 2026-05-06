@@ -47,7 +47,7 @@ describe('Database', () => {
     expect(todoInDb).toEqual(createdTodo);
   });
 
-  test.skip('a created todo can be fetched', async () => {
+  test('a created todo can be fetched', async () => {
     const todo = { content: 'Go to the grocery store' };
     const createdTodo = await todoRepository.create(todo);
     const fetchedTodos = await todoRepository.fetchAll();

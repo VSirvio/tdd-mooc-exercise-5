@@ -5,8 +5,9 @@ export class TodoRepository {
     this.#todosCollection = mongoClient.db().collection('todos');
   }
 
-  fetchAll() {
-    return [];
+  async fetchAll() {
+    const fetchedTodos = await this.#todosCollection.find().toArray();
+    return fetchedTodos.map(todo => ({ id: todo._id, content: todo.content }));
   }
 
   async create(todo) {
