@@ -14,7 +14,7 @@ In the root directory of the project, run the command
 
     docker compose up -d
 
-The application can be shut down with `docker compose down`
+The application is then running at [http://localhost:5173](http://localhost:5173). It can be shut down with `docker compose down`
 
 ## Running the E2E tests
 
