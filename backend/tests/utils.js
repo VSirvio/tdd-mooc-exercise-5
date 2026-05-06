@@ -5,7 +5,7 @@ export class DbTestHelper {
     this.#todosCollection = mongoClient.db().collection('todos');
   }
 
-  async getTodoById(id) {
+  async fetchTodoFromDb(id) {
     const fetchedTodo = await this.#todosCollection.findOne({ _id: id });
     return { id: fetchedTodo._id, content: fetchedTodo.content };
   }
