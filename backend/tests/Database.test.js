@@ -11,7 +11,7 @@ describe('Database', () => {
   let todoRepository;
   beforeAll(() => {
     mongoClient = new MongoClient(DATABASE_URI);
-    dbTestHelper = new DbTestHelper();
+    dbTestHelper = new DbTestHelper(mongoClient);
     todoRepository = new TodoRepository(mongoClient);
   });
 
