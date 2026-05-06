@@ -4,6 +4,10 @@
 
 My solution to exercise 5 in the Test-Driven Development MOOC course. It is a simple To-Do List web application developed using Test-Driven Development.
 
+## Features
+
+* *TBA*
+
 ## Technologies used
 
 * **Backend:** [Express](https://expressjs.com) / JavaScript
