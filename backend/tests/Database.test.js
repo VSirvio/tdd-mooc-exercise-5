@@ -20,4 +20,10 @@ describe('Database', () => {
     const createdTodo2 = await todoRepository.create(todo2);
     expect(createdTodo2.content).toBe(todo2.content);
   });
+
+  test('a created todo has an ID', async () => {
+    const todo = { content: 'Learn Rust' };
+    const createdTodo = await todoRepository.create(todo);
+    expect(createdTodo).toHaveProperty('id');
+  });
 });

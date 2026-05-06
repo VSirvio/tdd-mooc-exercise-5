@@ -4,6 +4,6 @@ export class TodoRepository {
   }
 
   create(todo) {
-    return todo;
+    return { ...todo, id: 1 };
   }
 }
