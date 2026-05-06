@@ -5,10 +5,14 @@
   "author": "Ville Sirviö",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "vitest"
   },
   "dependencies": {
     "express": "^5.2.1",
     "mongodb": "^7.2.0"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.5"
   }
 }
