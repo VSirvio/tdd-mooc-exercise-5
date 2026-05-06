@@ -14,6 +14,7 @@ My solution to exercise 5 in the Test-Driven Development MOOC course. It is a si
 * **Frontend:** [React](https://react.dev) / JavaScript
 * **Database:** [MongoDB](https://www.mongodb.com)
 * **E2E tests:** [Playwright](https://playwright.dev)
+* **Unit tests:** [Vitest](https://vitest.dev)
 
 ## Prerequisites
 
