@@ -4,6 +4,7 @@ import { createApp } from '../src/app.js';
 
 const MockTodoRepository = vi.fn(class {});
 
+const todoRepository = new MockTodoRepository();
 const app = createApp();
 
 describe('App', () => {
