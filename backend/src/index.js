@@ -5,6 +5,7 @@ import { TodoRepository } from './TodoRepository.js';
 const DATABASE_URI = process.env.DATABASE_URI;
 
 const mongoClient = new MongoClient(DATABASE_URI);
+const todoRepository = new TodoRepository(mongoClient);
 
 const app = createApp();
 
