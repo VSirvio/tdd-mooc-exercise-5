@@ -34,12 +34,16 @@ describe('Todo service', () => {
     const todo = { id: '69fcde5bf74fcbdccf1661d8', content: 'Fix the car' };
     const newTodoData = { content: todo.content };
 
+    let requestBody;
     mockServer.use(
-      http.post(API_URL, () => {
+      http.post(API_URL, async ({ request }) => {
+        requestBody = await request.clone().json();
         return HttpResponse.json(todo);
       })
     );
 
     const createdTodo = await todoService.create(newTodoData);
+    expect(requestBody).toEqual(newTodoData);
+    expect(createdTodo).toEqual(todo);
   });
 });

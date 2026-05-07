@@ -11,6 +11,13 @@ export class TodoService {
     return fetchedTodos;
   }
 
-  async create() {
+  async create(todo) {
+    const postResponse = await fetch(this.#apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(todo),
+    });
+    const createdTodo = await postResponse.json();
+    return createdTodo;
   }
 }
