@@ -12,6 +12,8 @@ const App = () => {
       });
       const createdTodo = await postResponse.json();
 
+      const getResponse = await fetch('/api/todos');
+
       const response = await fetch('/api');
       setBackendMsg(await response.text());
     };
