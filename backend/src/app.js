@@ -8,19 +8,19 @@ const database = mongoClient.db('todo-app');
 const todos = database.collection('todos');
 
 const createApp = () => {
-const app = express();
+  const app = express();
 
-app.get('/', async (req, res) => {
-  await todos.insertOne({ content: 'Hello from database' });
-  const fetchedTodo = await todos.findOneAndDelete({});
-  res.send(fetchedTodo.content);
-});
+  app.get('/', async (req, res) => {
+    await todos.insertOne({ content: 'Hello from database' });
+    const fetchedTodo = await todos.findOneAndDelete({});
+    res.send(fetchedTodo.content);
+  });
 
-app.get('/api/todos', (req, res) => {
-  res.end();
-});
+  app.get('/api/todos', (req, res) => {
+    res.end();
+  });
 
-return app;
+  return app;
 };
 
 const app = null;
