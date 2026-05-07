@@ -1,6 +1,6 @@
 import { describe, test } from 'vitest';
 import request from 'supertest';
-import app from '../src/app.js';
+import { app } from '../src/app.js';
 
 describe('App', () => {
   test('responds with status code 200 when fetching all todos', async () => {
