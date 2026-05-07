@@ -50,4 +50,11 @@ describe('App', () => {
     expect(todoRepository.create).toHaveBeenCalledExactlyOnceWith(newTodoData);
     expect(response.body).toEqual(todo);
   });
+
+  test('responds with error when trying to create a new todo with invalid content', async () => {
+    await request(app)
+      .post('/api/todos')
+      .send({})
+      .expect(400);
+  });
 });
