@@ -1,7 +1,7 @@
 import express from 'express';
 import { MongoClient } from 'mongodb';
 
-const DATABASE_URI = process.env.DATABASE_URI;
+const DATABASE_URI = process.env.DATABASE_URI || 'mongodb://localhost:27018/test';
 
 const mongoClient = new MongoClient(DATABASE_URI);
 const database = mongoClient.db('todo-app');
