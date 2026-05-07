@@ -13,7 +13,7 @@ const createApp = todoRepository => {
 
   app.use(express.json());
 
-  app.get('/', async (req, res) => {
+  app.get('/api', async (req, res) => {
     await todos.insertOne({ content: 'Hello from database' });
     const fetchedTodo = await todos.findOneAndDelete({});
     res.send(fetchedTodo.content);
