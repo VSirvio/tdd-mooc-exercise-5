@@ -2,6 +2,7 @@ import { describe, test } from 'vitest';
 import request from 'supertest';
 import { createApp } from '../src/app.js';
 
+const app = createApp();
 const app2 = createApp();
 
 describe('App', () => {
