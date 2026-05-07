@@ -5,6 +5,12 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const postResponse = await fetch('/api/todos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: 'To the database and back again' }),
+      });
+
       const response = await fetch('/api');
       setBackendMsg(await response.text());
     };
