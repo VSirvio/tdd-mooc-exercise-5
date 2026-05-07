@@ -30,6 +30,7 @@ const createApp = todoRepository => {
   });
 
   const todosRouter = createTodosRouter(todoRepository);
+  app.use('/api/todos', todosRouter);
 
   return app;
 };
