@@ -10,6 +10,7 @@ const App = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ content: 'To the database and back again' }),
       });
+      const createdTodo = await postResponse.json();
 
       const response = await fetch('/api');
       setBackendMsg(await response.text());
