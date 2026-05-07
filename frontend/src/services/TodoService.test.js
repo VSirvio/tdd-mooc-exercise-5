@@ -4,6 +4,7 @@ import { TodoService } from './TodoService.js';
 const todoService = new TodoService();
 
 describe('Todo service', () => {
-  test('can fetch all todos', () => {
+  test('can fetch all todos', async () => {
+    await todoService.fetchAll();
   });
 });
