@@ -21,6 +21,10 @@ const createApp = todoRepository => {
     res.json(todos);
   });
 
+  app.post('/api/todos', async (req, res) => {
+    res.sendStatus(201);
+  });
+
   return app;
 };
 

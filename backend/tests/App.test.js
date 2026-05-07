@@ -29,4 +29,11 @@ describe('App', () => {
     expect(todoRepository.fetchAll).toHaveBeenCalledExactlyOnceWith();
     expect(response.body).toEqual(todos);
   });
+
+  test('responds with status code 201 after creating a new todo', async () => {
+    await request(app)
+      .post('/api/todos')
+      .send({ content: 'Do something' })
+      .expect(201);
+  });
 });
