@@ -7,7 +7,7 @@ const mongoClient = new MongoClient(DATABASE_URI);
 const database = mongoClient.db('todo-app');
 const todos = database.collection('todos');
 
-const createApp = () => {};
+const createApp = () => {
 const app = express();
 
 app.get('/', async (req, res) => {
@@ -19,5 +19,10 @@ app.get('/', async (req, res) => {
 app.get('/api/todos', (req, res) => {
   res.end();
 });
+
+return app;
+};
+
+const app = null;
 
 export { app, createApp };
