@@ -29,6 +29,8 @@ const createApp = todoRepository => {
     res.status(201).json(createdTodo);
   });
 
+  const todosRouter = createTodosRouter(todoRepository);
+
   return app;
 };
 
