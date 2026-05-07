@@ -1,5 +1,6 @@
 import { MongoClient } from 'mongodb';
 import { createApp } from './app.js';
+import { TodoRepository } from './TodoRepository.js';
 
 const DATABASE_URI = process.env.DATABASE_URI;
 
