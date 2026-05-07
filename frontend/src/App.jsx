@@ -14,7 +14,7 @@ const App = () => {
         body: JSON.stringify({ content: 'To the database and back again' }),
       });
       const todo = { content: 'To the database and back again' };
-      const createdTodo = await postResponse.json();
+      const createdTodo = await todoService.create(todo);
 
       const fetchedTodos = await todoService.fetchAll();
 
