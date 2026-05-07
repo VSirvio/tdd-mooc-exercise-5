@@ -10,4 +10,7 @@ export class TodoService {
     const fetchedTodos = await getResponse.json();
     return fetchedTodos;
   }
+
+  async create() {
+  }
 }

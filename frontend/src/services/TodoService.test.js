@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest';
+import { afterEach, describe, expect, test } from 'vitest';
 import { http, HttpResponse } from 'msw';
 import { setupServer } from 'msw/node';
 import { TodoService } from './TodoService.js';
@@ -11,6 +11,10 @@ const mockServer = setupServer();
 mockServer.listen();
 
 describe('Todo service', () => {
+  afterEach(() => {
+    mockServer.resetHandlers();
+  });
+
   test('can fetch all todos', async () => {
     const todos = [
       { id: '69fcd8b9414992d62f01fc7c', content: 'Get the birthday present' },
@@ -24,5 +28,18 @@ describe('Todo service', () => {
 
     const fetchedTodos = await todoService.fetchAll();
     expect(fetchedTodos).toEqual(todos);
+  });
+
+  test('can create new todo', async () => {
+    const todo = { id: '69fcde5bf74fcbdccf1661d8', content: 'Fix the car' };
+    const newTodoData = { content: todo.content };
+
+    mockServer.use(
+      http.post(API_URL, () => {
+        return HttpResponse.json(todo);
+      })
+    );
+
+    const createdTodo = await todoService.create(newTodoData);
   });
 });
