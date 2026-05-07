@@ -2,6 +2,8 @@ import { describe, test, vi } from 'vitest';
 import request from 'supertest';
 import { createApp } from '../src/app.js';
 
+const MockTodoRepository = vi.fn(class {});
+
 const app = createApp();
 
 describe('App', () => {
