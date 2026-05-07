@@ -10,6 +10,8 @@ const todos = database.collection('todos');
 const createApp = todoRepository => {
   const app = express();
 
+  app.use(express.json());
+
   app.get('/', async (req, res) => {
     await todos.insertOne({ content: 'Hello from database' });
     const fetchedTodo = await todos.findOneAndDelete({});
@@ -22,6 +24,7 @@ const createApp = todoRepository => {
   });
 
   app.post('/api/todos', async (req, res) => {
+    const createdTodo = await todoRepository.create(req.body);
     res.sendStatus(201);
   });
 

@@ -4,6 +4,7 @@ import { createApp } from '../src/app.js';
 
 const MockTodoRepository = vi.fn(class {
   fetchAll = vi.fn()
+  create = vi.fn()
 });
 
 const todoRepository = new MockTodoRepository();
@@ -35,5 +36,17 @@ describe('App', () => {
       .post('/api/todos')
       .send({ content: 'Do something' })
       .expect(201);
+  });
+
+  test('can create new todo', async () => {
+    const todo = { id: '69fcb75675199230e2d3ce25', content: 'Update my PC' };
+    const newTodoData = { content: todo.content };
+    todoRepository.create.mockReturnValueOnce(todo);
+
+    const response = await request(app)
+      .post('/api/todos')
+      .send(newTodoData);
+
+    expect(todoRepository.create).toHaveBeenCalledExactlyOnceWith(newTodoData);
   });
 });
