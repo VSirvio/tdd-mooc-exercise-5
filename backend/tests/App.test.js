@@ -52,9 +52,7 @@ describe('App', () => {
   });
 
   test('responds with error when trying to create a new todo with invalid content', async () => {
-    await request(app)
-      .post('/api/todos')
-      .send({})
-      .expect(400);
+    await request(app).post('/api/todos').send({}).expect(400);
+    await request(app).post('/api/todos').send('a').expect(400);
   });
 });
