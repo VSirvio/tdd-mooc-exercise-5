@@ -15,4 +15,8 @@ app.get('/', async (req, res) => {
   res.send(fetchedTodo.content);
 });
 
+app.get('/api/todos', (req, res) => {
+  res.end();
+});
+
 export default app;
