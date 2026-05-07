@@ -31,6 +31,4 @@ const createApp = todoRepository => {
   return app;
 };
 
-const app = null;
-
-export { app, createApp };
+export { createApp };
