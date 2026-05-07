@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { TodoService } from './services/TodoService.js';
 
+const todoService = new TodoService('/api/todos');
+
 const App = () => {
   const [receivedMsg, setReceivedMsg] = useState('');
 
