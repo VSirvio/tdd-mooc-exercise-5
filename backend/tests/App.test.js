@@ -48,5 +48,6 @@ describe('App', () => {
       .send(newTodoData);
 
     expect(todoRepository.create).toHaveBeenCalledExactlyOnceWith(newTodoData);
+    expect(response.body).toEqual(todo);
   });
 });

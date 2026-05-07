@@ -25,7 +25,7 @@ const createApp = todoRepository => {
 
   app.post('/api/todos', async (req, res) => {
     const createdTodo = await todoRepository.create(req.body);
-    res.sendStatus(201);
+    res.status(201).json(createdTodo);
   });
 
   return app;
