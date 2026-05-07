@@ -28,7 +28,6 @@ const App = () => {
   return (
     <>
       <h1>Todos</h1>
-      <p>{backendMsg}</p>
       <p>{receivedMsg}</p>
     </>
   );
