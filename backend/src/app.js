@@ -19,11 +19,6 @@ const createApp = todoRepository => {
     res.send(fetchedTodo.content);
   });
 
-  app.get('/api/todos', async (req, res) => {
-    const todos = await todoRepository.fetchAll();
-    res.json(todos);
-  });
-
   const todosRouter = createTodosRouter(todoRepository);
   app.use('/api/todos', todosRouter);
 
