@@ -15,6 +15,8 @@ const App = () => {
       const getResponse = await fetch('/api/todos');
       const fetchedTodos = await getResponse.json();
 
+      const fetchedTodo = fetchedTodos.find(todo => todo.id === createdTodo.id);
+
       const response = await fetch('/api');
       setBackendMsg(await response.text());
     };
