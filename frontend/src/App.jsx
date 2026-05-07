@@ -15,7 +15,6 @@ const App = () => {
       });
       const createdTodo = await postResponse.json();
 
-      const getResponse = await fetch('/api/todos');
       const fetchedTodos = await todoService.fetchAll();
 
       const fetchedTodo = fetchedTodos.find(todo => todo.id === createdTodo.id);
