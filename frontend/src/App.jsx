@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 const App = () => {
-  const [backendMsg, setBackendMsg] = useState('');
   const [receivedMsg, setReceivedMsg] = useState('');
 
   useEffect(() => {
