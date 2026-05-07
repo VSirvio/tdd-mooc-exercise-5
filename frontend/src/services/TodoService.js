@@ -1,5 +1,13 @@
 export class TodoService {
+  #apiUrl;
+
+  constructor(apiUrl) {
+    this.#apiUrl = apiUrl;
+  }
+
   async fetchAll() {
-    return [];
+    const getResponse = await fetch(this.#apiUrl);
+    const fetchedTodos = await getResponse.json();
+    return fetchedTodos;
   }
 }
