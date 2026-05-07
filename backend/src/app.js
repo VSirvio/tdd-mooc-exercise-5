@@ -20,4 +20,4 @@ app.get('/api/todos', (req, res) => {
   res.end();
 });
 
-export { app };
+export { app, createApp };
