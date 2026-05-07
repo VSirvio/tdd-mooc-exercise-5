@@ -1,4 +1,4 @@
-import { describe, test } from 'vitest';
+import { describe, test, vi } from 'vitest';
 import request from 'supertest';
 import { createApp } from '../src/app.js';
 
