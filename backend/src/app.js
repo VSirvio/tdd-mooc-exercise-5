@@ -13,12 +13,6 @@ const createApp = todoRepository => {
 
   app.use(express.json());
 
-  app.get('/api', async (req, res) => {
-    await todos.insertOne({ content: 'Hello from database' });
-    const fetchedTodo = await todos.findOneAndDelete({});
-    res.send(fetchedTodo.content);
-  });
-
   const todosRouter = createTodosRouter(todoRepository);
   app.use('/api/todos', todosRouter);
 
