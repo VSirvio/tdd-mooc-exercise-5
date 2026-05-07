@@ -13,6 +13,7 @@ const App = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ content: 'To the database and back again' }),
       });
+      const todo = { content: 'To the database and back again' };
       const createdTodo = await postResponse.json();
 
       const fetchedTodos = await todoService.fetchAll();
