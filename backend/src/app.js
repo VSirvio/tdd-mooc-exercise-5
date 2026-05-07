@@ -18,7 +18,7 @@ const createApp = todoRepository => {
 
   app.get('/api/todos', async (req, res) => {
     const todos = await todoRepository.fetchAll();
-    res.end();
+    res.json(todos);
   });
 
   return app;

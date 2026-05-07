@@ -27,5 +27,6 @@ describe('App', () => {
     const response = await request(app).get('/api/todos');
 
     expect(todoRepository.fetchAll).toHaveBeenCalledExactlyOnceWith();
+    expect(response.body).toEqual(todos);
   });
 });
