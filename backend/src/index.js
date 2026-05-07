@@ -1,5 +1,6 @@
 import { createApp } from './app.js';
 
+const app = createApp();
 const app2 = createApp();
 
 const PORT = process.env.PORT || 3000;
