@@ -1,6 +1,8 @@
 import { MongoClient } from 'mongodb';
 import { createApp } from './app.js';
 
+const DATABASE_URI = process.env.DATABASE_URI;
+
 const app = createApp();
 
 const PORT = process.env.PORT || 3000;
