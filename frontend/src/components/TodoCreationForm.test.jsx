@@ -6,6 +6,7 @@ describe('TodoCreationForm', () => {
   test('can submit new todo', () => {
     render(<TodoCreationForm />);
 
+    const inputField = screen.getByPlaceholderText('Write a new todo here');
     const createButton = screen.getByText('Create');
   });
 });

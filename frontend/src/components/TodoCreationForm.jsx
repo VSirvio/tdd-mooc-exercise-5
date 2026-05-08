@@ -1,6 +1,9 @@
 const TodoCreationForm = () => {
   return (
-    <button>Create</button>
+    <form>
+      <input placeholder="Write a new todo here" />
+      <button>Create</button>
+    </form>
   );
 };
 
