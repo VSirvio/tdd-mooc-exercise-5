@@ -35,6 +35,12 @@ The application is then running at [http://localhost:5173](http://localhost:5173
 3. Install dependencies with `npm install`
 4. Run the tests with `npm test`
 
+## Running the frontend's unit tests
+
+1. Go to the `frontend` directory
+2. Install dependencies with `npm install`
+3. Run the tests with `npm test`
+
 ## Running the E2E tests
 
 1. Start the application
