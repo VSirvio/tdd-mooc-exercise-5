@@ -83,19 +83,25 @@ describe('App', () => {
   test('creates a new todo when the todo creation form is submitted', async () => {
     const todoId = '69fcb2f2de7eee505d6378d1';
 
+    const newTodoContent = 'Practice playing piano';
+
     let todoContent;
-    todoService.create.mockImplementationOnce(todo => {
+    let newTodoCreated = false;
+    todoService.create.mockImplementation(todo => {
+      newTodoCreated = newTodoCreated || todo.content === newTodoContent;
       todoContent = todo.content;
       return { id: todoId, content: todoContent };
     });
-    todoService.fetchAll.mockReturnValueOnce([{ id: todoId, content: todoContent }]);
+    todoService.fetchAll.mockReturnValue([{ id: todoId, content: todoContent }]);
 
     TodoCreationForm.mockImplementation(({ handler }) => {
-      handler();
+      handler(newTodoContent);
     });
 
     await act(async () => {
       render(<App todoService={todoService} />);
     });
+
+    expect(newTodoCreated).toBe(true);
   });
 });

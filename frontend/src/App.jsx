@@ -6,7 +6,8 @@ const App = ({ todoService }) => {
   const [todos, setTodos] = useState([]);
   const [receivedMsg, setReceivedMsg] = useState('');
 
-  const createTodo = () => {
+  const createTodo = async content => {
+    const createdTodo = await todoService.create({ content });
   };
 
   useEffect(() => {
