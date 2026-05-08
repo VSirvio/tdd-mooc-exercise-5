@@ -3,7 +3,7 @@ import { TodoService } from './services/TodoService.js';
 
 const todoService = new TodoService('/api/todos');
 
-const App = () => {
+const App = ({ todoService }) => {
   const [receivedMsg, setReceivedMsg] = useState('');
 
   useEffect(() => {
