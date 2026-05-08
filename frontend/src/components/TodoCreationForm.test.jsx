@@ -1,13 +1,24 @@
-import { describe, test } from 'vitest';
+import { describe, test, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import TodoCreationForm from './TodoCreationForm.jsx';
 
 describe('TodoCreationForm', () => {
-  test('can submit new todo', () => {
-    render(<TodoCreationForm />);
+  test('can submit new todo', async () => {
+    const user = userEvent.setup();
+
+    const handler = vi.fn();
+
+    render(<TodoCreationForm handler={handler} />);
 
     const inputField = screen.getByPlaceholderText('Write a new todo here');
     const createButton = screen.getByText('Create');
+
+    const todoContent = 'Go jogging';
+
+    await user.type(inputField, todoContent);
+    await user.click(createButton);
+
+    expect(handler).toHaveBeenCalledExactlyOnceWith(todoContent);
   });
 });
