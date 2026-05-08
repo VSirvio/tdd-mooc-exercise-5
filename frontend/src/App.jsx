@@ -6,6 +6,9 @@ const App = ({ todoService }) => {
   const [todos, setTodos] = useState([]);
   const [receivedMsg, setReceivedMsg] = useState('');
 
+  const createTodo = () => {
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       const todo = { content: 'To the database and back again' };
@@ -25,7 +28,7 @@ const App = ({ todoService }) => {
       <h1>Todos</h1>
       <p>{receivedMsg}</p>
       <TodoList todos={todos} />
-      <TodoCreationForm />
+      <TodoCreationForm handler={createTodo} />
     </>
   );
 };

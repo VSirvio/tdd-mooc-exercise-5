@@ -79,4 +79,23 @@ describe('App', () => {
     const element = screen.getByText(todoCreationFormText);
     expect(element).toBeDefined();
   });
+
+  test('creates a new todo when the todo creation form is submitted', async () => {
+    const todoId = '69fcb2f2de7eee505d6378d1';
+
+    let todoContent;
+    todoService.create.mockImplementationOnce(todo => {
+      todoContent = todo.content;
+      return { id: todoId, content: todoContent };
+    });
+    todoService.fetchAll.mockReturnValueOnce([{ id: todoId, content: todoContent }]);
+
+    TodoCreationForm.mockImplementation(({ handler }) => {
+      handler();
+    });
+
+    await act(async () => {
+      render(<App todoService={todoService} />);
+    });
+  });
 });
