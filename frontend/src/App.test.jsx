@@ -32,4 +32,28 @@ describe('App', () => {
     const element = screen.getByText(todoListText);
     expect(element).toBeDefined();
   });
+
+  test('populates the todo list', async () => {
+    const todoId = '69fcb2f2de7eee505d6378d1';
+
+    const todo = { id: '69fd8a21f5342f5fb8a8fa82', content: 'Take a nap' };
+
+    let todoContent;
+    todoService.create.mockImplementationOnce(todo => {
+      todoContent = todo.content;
+      return { id: todoId, content: todoContent };
+    });
+    todoService.fetchAll.mockReturnValue([
+      { id: todoId, content: todoContent },
+      todo,
+    ]);
+
+    await act(async () => {
+      render(<App todoService={todoService} />);
+    });
+
+    expect(TodoList.mock.calls).toSatisfy(calls => calls.some(call =>
+      call[0].todos.some(t => t.id === todo.id && t.content === todo.content)
+    ));
+  });
 });
