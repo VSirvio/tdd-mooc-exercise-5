@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import TodoCreationForm from './components/TodoCreationForm.jsx';
 import TodoList from './components/TodoList.jsx';
 
 const App = ({ todoService }) => {
@@ -24,6 +25,7 @@ const App = ({ todoService }) => {
       <h1>Todos</h1>
       <p>{receivedMsg}</p>
       <TodoList todos={todos} />
+      <TodoCreationForm />
     </>
   );
 };

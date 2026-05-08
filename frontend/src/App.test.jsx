@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { act } from 'react';
 import App from './App.jsx';
 import TodoList from './components/TodoList.jsx';
+import TodoCreationForm from './components/TodoCreationForm.jsx';
 
 const todoService = {
   fetchAll: vi.fn(),
@@ -10,6 +11,7 @@ const todoService = {
 };
 
 vi.mock(import('./components/TodoList.jsx'), () => ({ default: vi.fn() }));
+vi.mock(import('./components/TodoCreationForm.jsx'), () => ({ default: vi.fn() }));
 
 describe('App', () => {
   test('displays todo list', async () => {
@@ -55,5 +57,26 @@ describe('App', () => {
     expect(TodoList.mock.calls).toSatisfy(calls => calls.some(call =>
       call[0].todos.some(t => t.id === todo.id && t.content === todo.content)
     ));
+  });
+
+  test('displays todo creation form', async () => {
+    const todoId = '69fcb2f2de7eee505d6378d1';
+
+    let todoContent;
+    todoService.create.mockImplementationOnce(todo => {
+      todoContent = todo.content;
+      return { id: todoId, content: todoContent };
+    });
+    todoService.fetchAll.mockReturnValueOnce([{ id: todoId, content: todoContent }]);
+
+    const todoCreationFormText = 'This text is in the TodoCreationForm component';
+    TodoCreationForm.mockReturnValue(<div>{todoCreationFormText}</div>);
+
+    await act(async () => {
+      render(<App todoService={todoService} />);
+    });
+
+    const element = screen.getByText(todoCreationFormText);
+    expect(element).toBeDefined();
   });
 });
