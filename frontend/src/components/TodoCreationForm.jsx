@@ -1,11 +1,19 @@
+import { useState } from 'react';
+
 const TodoCreationForm = ({ handler }) => {
+  const [newTodo, setNewTodo] = useState('');
+
   const submit = event => {
-    handler('Go jogging')
+    handler(newTodo);
   };
 
   return (
     <form onSubmit={submit}>
-      <input placeholder="Write a new todo here" />
+      <input
+        value={newTodo}
+        onChange={event => setNewTodo(event.target.value)}
+        placeholder="Write a new todo here"
+      />
       <button>Create</button>
     </form>
   );

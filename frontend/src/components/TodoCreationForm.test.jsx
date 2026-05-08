@@ -19,6 +19,15 @@ describe('TodoCreationForm', () => {
     await user.type(inputField, todoContent);
     await user.click(createButton);
 
-    expect(handler).toHaveBeenCalledExactlyOnceWith(todoContent);
+    await user.clear(inputField);
+
+    const todoContent2 = 'Go fill up the car';
+
+    await user.type(inputField, todoContent2);
+    await user.click(createButton);
+
+    expect(handler).toHaveBeenCalledTimes(2);
+    expect(handler).toHaveBeenNthCalledWith(1, todoContent);
+    expect(handler).toHaveBeenNthCalledWith(2, todoContent2);
   });
 });
