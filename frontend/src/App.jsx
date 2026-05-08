@@ -8,6 +8,7 @@ const App = ({ todoService }) => {
 
   const createTodo = async content => {
     const createdTodo = await todoService.create({ content });
+    setTodos(await todoService.fetchAll());
   };
 
   useEffect(() => {

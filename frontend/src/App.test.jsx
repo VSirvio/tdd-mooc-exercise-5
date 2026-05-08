@@ -1,6 +1,6 @@
 import { describe, test, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { act } from 'react';
+import { act, useEffect } from 'react';
 import App from './App.jsx';
 import TodoList from './components/TodoList.jsx';
 import TodoCreationForm from './components/TodoCreationForm.jsx';
@@ -87,7 +87,7 @@ describe('App', () => {
 
     let todoContent;
     let newTodoCreated = false;
-    todoService.create.mockImplementation(todo => {
+    todoService.create.mockImplementation(async todo => {
       newTodoCreated = newTodoCreated || todo.content === newTodoContent;
       todoContent = todo.content;
       return { id: todoId, content: todoContent };
@@ -95,7 +95,9 @@ describe('App', () => {
     todoService.fetchAll.mockReturnValue([{ id: todoId, content: todoContent }]);
 
     TodoCreationForm.mockImplementation(({ handler }) => {
-      handler(newTodoContent);
+      useEffect(() => {
+        handler(newTodoContent);
+      }, []);
     });
 
     await act(async () => {
@@ -103,5 +105,6 @@ describe('App', () => {
     });
 
     expect(newTodoCreated).toBe(true);
+    expect(todoService.fetchAll).toHaveBeenCalledTimes(2);
   });
 });
