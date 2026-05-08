@@ -4,6 +4,7 @@ const TodoCreationForm = ({ handler }) => {
   const [newTodo, setNewTodo] = useState('');
 
   const submit = event => {
+    event.preventDefault();
     handler(newTodo);
     setNewTodo('');
   };
