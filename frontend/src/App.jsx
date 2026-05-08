@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import TodoList from './components/TodoList.jsx';
 
 const App = ({ todoService }) => {
   const [receivedMsg, setReceivedMsg] = useState('');
@@ -20,6 +21,7 @@ const App = ({ todoService }) => {
     <>
       <h1>Todos</h1>
       <p>{receivedMsg}</p>
+      <TodoList />
     </>
   );
 };
