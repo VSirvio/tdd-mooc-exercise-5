@@ -19,8 +19,6 @@ describe('TodoCreationForm', () => {
     await user.type(inputField, todoContent);
     await user.click(createButton);
 
-    await user.clear(inputField);
-
     const todoContent2 = 'Go fill up the car';
 
     await user.type(inputField, todoContent2);

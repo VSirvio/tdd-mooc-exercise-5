@@ -5,6 +5,7 @@ const TodoCreationForm = ({ handler }) => {
 
   const submit = event => {
     handler(newTodo);
+    setNewTodo('');
   };
 
   return (
