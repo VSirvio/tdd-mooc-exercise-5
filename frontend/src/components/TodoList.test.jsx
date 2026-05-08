@@ -13,5 +13,8 @@ describe('TodoList', () => {
 
     const element = screen.getByText(todos[0].content);
     expect(element).toBeDefined();
+
+    const element2 = screen.getByText(todos[1].content);
+    expect(element2).toBeDefined();
   });
 });

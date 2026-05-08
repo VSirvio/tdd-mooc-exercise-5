@@ -1,5 +1,7 @@
 const TodoList = props => (
-  <p>{props.todos[0].content}</p>
+  <ul>
+    {props.todos.map(todo => <li key={todo.id}>{todo.content}</li>)}
+  </ul>
 );
 
 export default TodoList;
