@@ -1,5 +1,5 @@
 import { describe, test } from 'vitest';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import TodoList from './TodoList.jsx';
 
 describe('TodoList', () => {
@@ -10,5 +10,8 @@ describe('TodoList', () => {
     ];
 
     render(<TodoList todos={todos} />);
+
+    const element = screen.getByText(todos[0].content);
+    expect(element).toBeDefined();
   });
 });
