@@ -4,13 +4,15 @@ import TodoList from './components/TodoList.jsx';
 
 const App = ({ todoService }) => {
   const [todos, setTodos] = useState([]);
+  const [editedTodoId, setEditedTodoId] = useState(null);
 
   const createTodo = async content => {
     await todoService.create({ content });
     setTodos(await todoService.fetchAll());
   };
 
-  const editTodo = () => {
+  const editTodo = todoId => {
+    setEditedTodoId(todoId);
   };
 
   useEffect(() => {
@@ -19,6 +21,10 @@ const App = ({ todoService }) => {
     };
     fetchData();
   }, []);
+
+  if (editedTodoId !== null) {
+    return <></>;
+  }
 
   return (
     <>

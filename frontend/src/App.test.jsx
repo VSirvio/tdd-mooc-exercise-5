@@ -74,15 +74,19 @@ describe('App', () => {
 
   test('opens the edit view when a todo is selected for editing', async () => {
     const todoId = '69ff8e937b5ddc9a44e96940';
+    const todoListText = 'This text is in the TodoList component';
 
     TodoList.mockImplementation(({ editTodo }) => {
       useEffect(() => {
         editTodo(todoId);
       }, []);
+      return <div>{todoListText}</div>;
     });
 
     await act(async () => {
       render(<App todoService={todoService} />);
     });
+
+    expect(screen.queryByText(todoListText)).not.toBeInTheDocument();
   });
 });
