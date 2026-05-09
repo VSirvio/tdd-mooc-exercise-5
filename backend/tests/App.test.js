@@ -82,5 +82,6 @@ describe('App', () => {
     await request(app).put('/api/todos').send('a').expect(400);
     await request(app).put('/api/todos').send({}).expect(400);
     await request(app).put('/api/todos').send({ content: '' }).expect(400);
+    await request(app).put('/api/todos').send({ content: 'a'.repeat(1000) }).expect(400);
   });
 });
