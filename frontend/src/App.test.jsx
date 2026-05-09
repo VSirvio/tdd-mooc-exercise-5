@@ -95,4 +95,25 @@ describe('App', () => {
     expect(screen.queryByText(todoListText)).not.toBeInTheDocument();
     expect(screen.getByText(todoEditFormText)).toBeVisible();
   });
+
+  test('returns to the list view when an edit is submitted', async () => {
+    const todoId = '69ff8e937b5ddc9a44e96940';
+    const editedContent = 'Water the flowers';
+
+    TodoList.mockImplementation(({ editTodo }) => {
+      useEffect(() => {
+        editTodo(todoId);
+      }, []);
+    });
+
+    TodoEditForm.mockImplementation(({ handler }) => {
+      useEffect(() => {
+        handler(editedContent);
+      }, []);
+    });
+
+    await act(async () => {
+      render(<App todoService={todoService} />);
+    });
+  });
 });

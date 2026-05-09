@@ -16,6 +16,9 @@ const App = ({ todoService }) => {
     setEditedTodoId(todoId);
   };
 
+  const sendTodoEdit = () => {
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       setTodos(await todoService.fetchAll());
@@ -24,7 +27,7 @@ const App = ({ todoService }) => {
   }, []);
 
   if (editedTodoId !== null) {
-    return <TodoEditForm />;
+    return <TodoEditForm handler={sendTodoEdit} />;
   }
 
   return (
