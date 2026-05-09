@@ -25,7 +25,7 @@ export const createTodosRouter = todoRepository => {
     res.status(201).json(createdTodo);
   });
 
-  todosRouter.put('/', async (req, res) => {
+  todosRouter.all('/', async (req, res) => {
     const todoEditData = req.body;
 
     if (
