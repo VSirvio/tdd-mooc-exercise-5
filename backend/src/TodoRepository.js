@@ -9,7 +9,7 @@ export class TodoRepository {
 
   async fetchAll() {
     const fetchedTodos = await this.#todosCollection.find().toArray();
-    return fetchedTodos.map(todo => ({ id: todo._id, content: todo.content }));
+    return fetchedTodos.map(todo => ({ id: todo._id, content: todo.content, ...(todo.state && { state: todo.state }) }));
   }
 
   async create(todo) {

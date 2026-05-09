@@ -95,4 +95,12 @@ describe('Database', () => {
     const updatedTodo = await todoRepository.update({ id: createdTodo.id, state: 'completed' });
     expect(updatedTodo).toEqual({ id: createdTodo.id, content: todoContent, state: 'completed' });
   });
+
+  test('fetches also completed states when fetching all todos', async () => {
+    const todoContent = 'Walk the cat';
+    const createdTodo = await todoRepository.create({ content: todoContent });
+    await todoRepository.update({ id: createdTodo.id, state: 'completed' });
+    const fetchedTodos = await todoRepository.fetchAll();
+    expect(fetchedTodos[0].state).toBe('completed');
+  });
 });
