@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-const TodoEditForm = ({ handler }) => {
-  const [editedTodo, setEditedTodo] = useState('');
+const TodoEditForm = ({ content, handler }) => {
+  const [editedTodo, setEditedTodo] = useState(content);
 
   const submit = event => {
     event.preventDefault();

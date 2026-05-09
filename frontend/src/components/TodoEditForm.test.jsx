@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import TodoEditForm from './TodoEditForm.jsx';
 
 describe('TodoEditForm', () => {
+  const origTodoContent = 'Do housework';
   let user;
   let handler;
   beforeEach(() => {
@@ -11,7 +12,7 @@ describe('TodoEditForm', () => {
 
     handler = vi.fn();
 
-    render(<TodoEditForm handler={handler} />);
+    render(<TodoEditForm content={origTodoContent} handler={handler} />);
   });
 
   test('can submit an edit for a todo', async () => {
@@ -20,9 +21,15 @@ describe('TodoEditForm', () => {
 
     const todoContent = 'Do homework';
 
+    await user.clear(inputField);
     await user.type(inputField, todoContent);
     await user.click(saveButton);
 
     expect(handler).toHaveBeenCalledExactlyOnceWith(todoContent);
+  });
+
+  test('sets the text field initially to the current todo content value', async () => {
+    const inputField = screen.getByRole('textbox');
+    expect(inputField.value).toBe(origTodoContent);
   });
 });
