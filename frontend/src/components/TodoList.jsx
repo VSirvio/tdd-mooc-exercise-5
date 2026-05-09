@@ -4,6 +4,7 @@ const TodoList = ({ todos, editTodo }) => (
       <li key={todo.id}>
         {todo.content}
         <button onClick={() => editTodo(todo.id)}>Edit</button>
+        <button>Complete</button>
       </li>
     ))}
   </ul>

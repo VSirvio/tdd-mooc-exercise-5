@@ -36,4 +36,19 @@ describe('TodoList', () => {
 
     expect(editTodo).toHaveBeenCalledExactlyOnceWith(todos[1].id);
   });
+
+  test('informs its parent when a "Complete" button is pressed', async () => {
+    const user = userEvent.setup();
+
+    const todos = [
+      { id: '69fd8a21f5342f5fb8a8fa82', content: 'Take out the trash' },
+      { id: '69fd8a874e0072ca38992d4a', content: 'Pay the bills' },
+    ];
+
+    const completeTodo = vi.fn();
+
+    render(<TodoList todos={todos} completeTodo={completeTodo} />);
+
+    const completeButtons = screen.getAllByRole('button', { name: 'Complete' });
+  });
 });
