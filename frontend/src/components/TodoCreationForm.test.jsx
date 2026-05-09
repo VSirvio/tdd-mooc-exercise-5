@@ -6,6 +6,7 @@ import TodoCreationForm from './TodoCreationForm.jsx';
 describe('TodoCreationForm', () => {
   let user;
   beforeEach(() => {
+    user = userEvent.setup();
   });
 
   test('can submit new todo', async () => {
