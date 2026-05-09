@@ -10,8 +10,6 @@ describe('TodoEditForm', () => {
   });
 
   test('can submit an edit for a todo', async () => {
-    const user = userEvent.setup();
-
     const handler = vi.fn();
 
     render(<TodoEditForm handler={handler} />);
