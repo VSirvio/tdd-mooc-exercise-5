@@ -14,4 +14,7 @@ export class TodoRepository {
     const result = await this.#todosCollection.insertOne(todo);
     return { id: result.insertedId, content: todo.content };
   }
+
+  async clear() {
+  }
 }

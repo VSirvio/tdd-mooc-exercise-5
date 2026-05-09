@@ -53,4 +53,10 @@ describe('Database', () => {
     const fetchedTodos = await todoRepository.fetchAll();
     expect(fetchedTodos).toEqual([createdTodo]);
   });
+
+  test('can be cleared', async () => {
+    const todo = { content: 'Start a new hobby' };
+    await todoRepository.create(todo);
+    await todoRepository.clear();
+  });
 });
