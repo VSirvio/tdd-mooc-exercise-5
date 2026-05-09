@@ -51,9 +51,11 @@ describe('Todo service', () => {
     const todoEditData = { id: '69ff230d6dc59b0a6816edf0', content: 'Buy potatoes' };
 
     let requestBody;
+    let requestContentType;
     mockServer.use(
       http.put(API_URL, async ({ request }) => {
         requestBody = await request.clone().json();
+        requestContentType = request.headers.get('Content-Type');
         return HttpResponse.json(todoEditData);
       })
     );
@@ -61,5 +63,6 @@ describe('Todo service', () => {
     const editedTodo = await todoService.update(todoEditData);
     expect(editedTodo).toEqual(todoEditData);
     expect(requestBody).toEqual(todoEditData);
+    expect(requestContentType).toBe('application/json');
   });
 });
