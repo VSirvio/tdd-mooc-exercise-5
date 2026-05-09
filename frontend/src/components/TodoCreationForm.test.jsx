@@ -13,6 +13,8 @@ describe('TodoCreationForm', () => {
     handler = vi.fn();
 
     render(<TodoCreationForm handler={handler} />);
+
+    inputField = screen.getByPlaceholderText('Write a new todo here');
   });
 
   test('can submit new todo', async () => {
