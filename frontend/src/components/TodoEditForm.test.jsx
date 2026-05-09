@@ -14,6 +14,8 @@ describe('TodoEditForm', () => {
     handler = vi.fn();
 
     render(<TodoEditForm content={origTodoContent} handler={handler} />);
+
+    inputField = screen.getByRole('textbox');
   });
 
   test('can submit an edit for a todo', async () => {
