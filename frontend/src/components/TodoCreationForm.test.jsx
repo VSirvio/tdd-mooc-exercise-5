@@ -6,6 +6,7 @@ import TodoCreationForm from './TodoCreationForm.jsx';
 describe('TodoCreationForm', () => {
   let user;
   let handler;
+  let inputField;
   beforeEach(() => {
     user = userEvent.setup();
 
