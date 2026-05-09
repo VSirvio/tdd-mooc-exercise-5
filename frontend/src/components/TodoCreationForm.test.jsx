@@ -10,8 +10,6 @@ describe('TodoCreationForm', () => {
   });
 
   test('can submit new todo', async () => {
-    const user = userEvent.setup();
-
     const handler = vi.fn();
 
     render(<TodoCreationForm handler={handler} />);
