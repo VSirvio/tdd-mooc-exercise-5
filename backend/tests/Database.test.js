@@ -72,4 +72,12 @@ describe('Database', () => {
     expect(fetchedTodos.find(todo => todo.id.equals(createdTodo.id)).content)
       .toBe(editedTodoContent);
   });
+
+  test('returns null if trying to edit a todo that does not exist', async () => {
+    const updatedTodo = await todoRepository.update({
+      id: '69fcb331be7431c61c810f44',
+      content: 'Do something',
+    });
+    expect(updatedTodo).toBe(null);
+  });
 });
