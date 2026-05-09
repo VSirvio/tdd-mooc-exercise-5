@@ -4,6 +4,7 @@ import { act, useEffect } from 'react';
 import App from './App.jsx';
 import TodoList from './components/TodoList.jsx';
 import TodoCreationForm from './components/TodoCreationForm.jsx';
+import TodoEditForm from './components/TodoEditForm.jsx';
 
 const todoService = {
   fetchAll: vi.fn(),
@@ -12,6 +13,7 @@ const todoService = {
 
 vi.mock(import('./components/TodoList.jsx'), () => ({ default: vi.fn() }));
 vi.mock(import('./components/TodoCreationForm.jsx'), () => ({ default: vi.fn() }));
+vi.mock(import('./components/TodoEditForm.jsx'), () => ({ default: vi.fn() }));
 
 describe('App', () => {
   test('displays todo list', async () => {
@@ -75,6 +77,7 @@ describe('App', () => {
   test('opens the edit view when a todo is selected for editing', async () => {
     const todoId = '69ff8e937b5ddc9a44e96940';
     const todoListText = 'This text is in the TodoList component';
+    const todoEditFormText = 'This text is in the TodoEditForm component';
 
     TodoList.mockImplementation(({ editTodo }) => {
       useEffect(() => {
@@ -83,10 +86,13 @@ describe('App', () => {
       return <div>{todoListText}</div>;
     });
 
+    TodoEditForm.mockImplementation(() => <div>{todoEditFormText}</div>);
+
     await act(async () => {
       render(<App todoService={todoService} />);
     });
 
     expect(screen.queryByText(todoListText)).not.toBeInTheDocument();
+    expect(screen.getByText(todoEditFormText)).toBeVisible();
   });
 });

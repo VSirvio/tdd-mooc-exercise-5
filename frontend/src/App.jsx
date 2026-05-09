@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import TodoCreationForm from './components/TodoCreationForm.jsx';
+import TodoEditForm from './components/TodoEditForm.jsx';
 import TodoList from './components/TodoList.jsx';
 
 const App = ({ todoService }) => {
@@ -23,7 +24,7 @@ const App = ({ todoService }) => {
   }, []);
 
   if (editedTodoId !== null) {
-    return <></>;
+    return <TodoEditForm />;
   }
 
   return (
