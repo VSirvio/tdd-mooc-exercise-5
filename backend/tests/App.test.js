@@ -59,8 +59,13 @@ describe('App', () => {
   });
 
   test('can edit a todo', async () => {
-    await request(app)
+    const editedTodo = { id: '69ff129e6dc59b0a6816edee', content: 'Book the trip to Rome' };
+
+    const response = await request(app)
       .put('/api/todos')
+      .send(editedTodo)
       .expect(200);
+
+    expect(response.body).toEqual(editedTodo);
   });
 });
