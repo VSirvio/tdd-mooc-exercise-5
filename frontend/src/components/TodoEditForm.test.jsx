@@ -21,8 +21,6 @@ describe('TodoEditForm', () => {
   });
 
   test('can submit an edit for a todo', async () => {
-    const saveButton = screen.getByRole('button', { name: 'Save' });
-
     const todoContent = 'Do homework';
 
     fireEvent.change(inputField, { target: { value: todoContent } });
