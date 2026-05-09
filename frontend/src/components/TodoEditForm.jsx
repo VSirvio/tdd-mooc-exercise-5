@@ -13,6 +13,7 @@ const TodoEditForm = ({ content, handler }) => {
       <input
         value={editedTodo}
         onChange={event => setEditedTodo(event.target.value)}
+        required
       />
       <button>Save</button>
     </form>

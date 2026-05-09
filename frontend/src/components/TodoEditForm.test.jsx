@@ -32,4 +32,10 @@ describe('TodoEditForm', () => {
   test('sets the text field initially to the current todo content value', async () => {
     expect(inputField.value).toBe(origTodoContent);
   });
+
+  test('does not accept empty content for todo', async () => {
+    await user.clear(inputField);
+    await user.click(saveButton);
+    expect(inputField).toBeInvalid();
+  });
 });
