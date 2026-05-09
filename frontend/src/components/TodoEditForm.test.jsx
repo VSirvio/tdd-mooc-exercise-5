@@ -13,8 +13,6 @@ describe('TodoEditForm', () => {
   });
 
   test('can submit an edit for a todo', async () => {
-    const handler = vi.fn();
-
     render(<TodoEditForm handler={handler} />);
 
     const inputField = screen.getByRole('textbox');
