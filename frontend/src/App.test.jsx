@@ -99,21 +99,32 @@ describe('App', () => {
   test('returns to the list view when an edit is submitted', async () => {
     const todoId = '69ff8e937b5ddc9a44e96940';
     const editedContent = 'Water the flowers';
+    const todoListText = 'This text is in the TodoList component';
+    const todoEditFormText = 'This text is in the TodoEditForm component';
 
+    let editFormVisited = false;
     TodoList.mockImplementation(({ editTodo }) => {
       useEffect(() => {
-        editTodo(todoId);
+        if (!editFormVisited) {
+          editTodo(todoId);
+        }
       }, []);
+      return <div>{todoListText}</div>;
     });
 
     TodoEditForm.mockImplementation(({ handler }) => {
       useEffect(() => {
+        editFormVisited = true;
         handler(editedContent);
       }, []);
+      return <div>{todoEditFormText}</div>;
     });
 
     await act(async () => {
       render(<App todoService={todoService} />);
     });
+
+    expect(screen.queryByText(todoEditFormText)).not.toBeInTheDocument();
+    expect(screen.getByText(todoListText)).toBeVisible();
   });
 });

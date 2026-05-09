@@ -17,6 +17,7 @@ const App = ({ todoService }) => {
   };
 
   const sendTodoEdit = () => {
+    setEditedTodoId(null);
   };
 
   useEffect(() => {
