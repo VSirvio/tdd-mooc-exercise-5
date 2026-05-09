@@ -1,6 +1,6 @@
 const TodoList = props => (
   <ul>
-    {props.todos.map(todo => <li key={todo.id}>{todo.content}</li>)}
+    {(props?.todos || todos).map(todo => <li key={todo.id}>{todo.content}</li>)}
   </ul>
 );
 
