@@ -23,6 +23,9 @@ const App = ({ todoService }) => {
     setTodos(await todoService.fetchAll());
   };
 
+  const completeTodo = async todoId => {
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       setTodos(await todoService.fetchAll());
@@ -39,7 +42,7 @@ const App = ({ todoService }) => {
   return (
     <>
       <h1>Todos</h1>
-      {isLoading || <TodoList todos={todos} editTodo={editTodo} />}
+      {isLoading || <TodoList todos={todos} editTodo={editTodo} completeTodo={completeTodo} />}
       <TodoCreationForm handler={createTodo} />
     </>
   );

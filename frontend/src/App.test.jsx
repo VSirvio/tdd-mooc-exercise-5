@@ -198,4 +198,18 @@ describe('App', () => {
 
     expect(todoService.fetchAll).toHaveBeenCalledTimes(2);
   });
+
+  test('toggles the completed state of a todo when its "Complete" button is pressed', async () => {
+    const todoId = '69ff8e937b5ddc9a44e96940';
+
+    TodoList.mockImplementation(({ completeTodo }) => {
+      useEffect(() => {
+        completeTodo(todoId);
+      }, []);
+    });
+
+    await act(async () => {
+      render(<App todoService={todoService} />);
+    });
+  });
 });
