@@ -16,5 +16,6 @@ export class TodoRepository {
   }
 
   async clear() {
+    await this.#todosCollection.drop();
   }
 }
