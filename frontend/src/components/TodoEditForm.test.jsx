@@ -6,6 +6,7 @@ import TodoEditForm from './TodoEditForm.jsx';
 describe('TodoEditForm', () => {
   let user;
   beforeEach(() => {
+    user = userEvent.setup();
   });
 
   test('can submit an edit for a todo', async () => {
