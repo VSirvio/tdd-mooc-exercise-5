@@ -64,7 +64,7 @@ describe('App', () => {
     todoRepository.update.mockReturnValueOnce(editedTodo);
 
     const response = await request(app)
-      .put('/api/todos')
+      .patch('/api/todos')
       .send(editedTodo)
       .expect(200);
 
