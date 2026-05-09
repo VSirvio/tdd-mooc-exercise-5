@@ -16,6 +16,7 @@ describe('TodoCreationForm', () => {
     render(<TodoCreationForm handler={handler} />);
 
     inputField = screen.getByPlaceholderText('Write a new todo here');
+    createButton = screen.getByText('Create');
   });
 
   test('can submit new todo', async () => {
