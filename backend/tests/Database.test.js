@@ -61,4 +61,11 @@ describe('Database', () => {
     const fetchedTodos = await todoRepository.fetchAll();
     expect(fetchedTodos).toEqual([]);
   });
+
+  test('a todo can be edited', async () => {
+    const todoContent = 'Walk the cat';
+    const editedTodoContent = 'Walk the dog';
+    const createdTodo = await todoRepository.create({ content: todoContent });
+    await todoRepository.update();
+  });
 });

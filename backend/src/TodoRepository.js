@@ -15,6 +15,9 @@ export class TodoRepository {
     return { id: result.insertedId, content: todo.content };
   }
 
+  async update(todo) {
+  }
+
   async clear() {
     await this.#todosCollection.drop();
   }
