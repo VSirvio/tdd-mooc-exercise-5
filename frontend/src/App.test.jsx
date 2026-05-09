@@ -15,15 +15,6 @@ vi.mock(import('./components/TodoCreationForm.jsx'), () => ({ default: vi.fn() }
 
 describe('App', () => {
   test('displays todo list', async () => {
-    const todoId = '69fcb2f2de7eee505d6378d1';
-
-    let todoContent;
-    todoService.create.mockImplementationOnce(todo => {
-      todoContent = todo.content;
-      return { id: todoId, content: todoContent };
-    });
-    todoService.fetchAll.mockReturnValueOnce([{ id: todoId, content: todoContent }]);
-
     const todoListText = 'This text is in the TodoList component';
     TodoList.mockReturnValue(<div>{todoListText}</div>);
 
