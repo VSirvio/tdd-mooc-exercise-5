@@ -10,11 +10,11 @@ describe('TodoEditForm', () => {
     user = userEvent.setup();
 
     handler = vi.fn();
+
+    render(<TodoEditForm handler={handler} />);
   });
 
   test('can submit an edit for a todo', async () => {
-    render(<TodoEditForm handler={handler} />);
-
     const inputField = screen.getByRole('textbox');
     const saveButton = screen.getByRole('button', { name: 'Save' });
 
