@@ -34,4 +34,9 @@ describe('TodoCreationForm', () => {
     expect(handler).toHaveBeenNthCalledWith(1, todoContent);
     expect(handler).toHaveBeenNthCalledWith(2, todoContent2);
   });
+
+  test('does not accept empty content for todo', async () => {
+    await user.click(createButton);
+    expect(inputField).toBeInvalid();
+  });
 });

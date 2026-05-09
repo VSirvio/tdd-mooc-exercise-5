@@ -15,6 +15,7 @@ const TodoCreationForm = ({ handler }) => {
         value={newTodo}
         onChange={event => setNewTodo(event.target.value)}
         placeholder="Write a new todo here"
+        required
       />
       <button>Create</button>
     </form>
