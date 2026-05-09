@@ -79,9 +79,11 @@ describe('App', () => {
   });
 
   test('responds with error when trying to edit a todo using invalid data', async () => {
+    const content = 'Do something';
     await request(app).put('/api/todos').send('a').expect(400);
     await request(app).put('/api/todos').send({}).expect(400);
     await request(app).put('/api/todos').send({ content: '' }).expect(400);
     await request(app).put('/api/todos').send({ content: 'a'.repeat(1000) }).expect(400);
+    await request(app).put('/api/todos').send({ content, id: 76 }).expect(400);
   });
 });
