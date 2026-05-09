@@ -7,5 +7,6 @@ describe('TodoEditForm', () => {
     render(<TodoEditForm />);
 
     const inputField = screen.getByRole('textbox');
+    const saveButton = screen.getByRole('button', { name: 'Save' });
   });
 });
