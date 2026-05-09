@@ -1,5 +1,6 @@
 import { describe, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import TodoList from './TodoList.jsx';
 
 describe('TodoList', () => {
@@ -18,7 +19,9 @@ describe('TodoList', () => {
     expect(element2).toBeDefined();
   });
 
-  test('informs its parent when an "Edit" button is pressed', () => {
+  test('informs its parent when an "Edit" button is pressed', async () => {
+    const user = userEvent.setup();
+
     const todos = [
       { id: '69fd8a21f5342f5fb8a8fa82', content: 'Take out the trash' },
       { id: '69fd8a874e0072ca38992d4a', content: 'Pay the bills' },
@@ -29,5 +32,8 @@ describe('TodoList', () => {
     render(<TodoList todos={todos} editTodo={editTodo} />);
 
     const editButtons = screen.getAllByRole('button', { name: 'Edit' });
+    await user.click(editButtons[1]);
+
+    expect(editTodo).toHaveBeenCalledExactlyOnceWith(todos[1].id);
   });
 });

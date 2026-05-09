@@ -1,9 +1,9 @@
-const TodoList = ({ todos }) => (
+const TodoList = ({ todos, editTodo }) => (
   <ul>
     {todos.map(todo => (
       <li key={todo.id}>
         {todo.content}
-        <button>Edit</button>
+        <button onClick={() => editTodo(todo.id)}>Edit</button>
       </li>
     ))}
   </ul>
