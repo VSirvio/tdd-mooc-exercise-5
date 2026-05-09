@@ -35,9 +35,7 @@ describe('App', () => {
       render(<App todoService={todoService} />);
     });
 
-    expect(TodoList.mock.calls).toSatisfy(calls => calls.some(call =>
-      call[0].todos.some(t => t.id === todo.id && t.content === todo.content)
-    ));
+    expect(TodoList).toHaveBeenCalledWith({ todos: [todo] }, undefined);
   });
 
   test('displays todo creation form', async () => {
