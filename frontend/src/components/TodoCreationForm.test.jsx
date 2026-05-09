@@ -4,6 +4,9 @@ import userEvent from '@testing-library/user-event';
 import TodoCreationForm from './TodoCreationForm.jsx';
 
 describe('TodoCreationForm', () => {
+  beforeEach(() => {
+  });
+
   test('can submit new todo', async () => {
     const user = userEvent.setup();
 
