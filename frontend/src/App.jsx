@@ -6,7 +6,7 @@ const App = ({ todoService }) => {
   const [todos, setTodos] = useState([]);
 
   const createTodo = async content => {
-    const createdTodo = await todoService.create({ content });
+    await todoService.create({ content });
     setTodos(await todoService.fetchAll());
   };
 
