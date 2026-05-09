@@ -80,4 +80,12 @@ describe('Database', () => {
     });
     expect(updatedTodo).toBe(null);
   });
+
+  test('accepts the ID also as a string when editing a todo', async () => {
+    const todoContent = 'Walk the cat';
+    const editedTodoContent = 'Walk the dog';
+    const createdTodo = await todoRepository.create({ content: todoContent });
+    const updatedTodo = await todoRepository.update({ id: createdTodo.id.toString(), content: editedTodoContent });
+    expect(updatedTodo).not.toBeNull();
+  });
 });

@@ -1,3 +1,5 @@
+import { ObjectId } from 'mongodb';
+
 export class TodoRepository {
   #todosCollection;
 
@@ -16,7 +18,7 @@ export class TodoRepository {
   }
 
   async update(todo) {
-    const filter = { _id: todo.id };
+    const filter = { _id: new ObjectId(todo.id) };
     const updateDoc = { $set: { content: todo.content } };
     const result = await this.#todosCollection.updateOne(filter, updateDoc);
 
