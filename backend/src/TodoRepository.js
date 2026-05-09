@@ -19,14 +19,25 @@ export class TodoRepository {
 
   async update(todo) {
     const filter = { _id: new ObjectId(todo.id) };
-    const updateDoc = { $set: { content: todo.content } };
-    const result = await this.#todosCollection.updateOne(filter, updateDoc);
+    const updateDoc = {
+      $set: {
+        ...(todo.content !== undefined ? { content: todo.content } : {}),
+        ...(todo.state !== undefined ? { state: todo.state } : {}),
+      },
+    };
+    const options = { returnDocument: 'after' };
+    const updatedTodo = await this.#todosCollection.findOneAndUpdate(filter, updateDoc, options);
 
-    if (result.matchedCount === 0) {
+    if (updatedTodo === null) {
       return null;
     }
 
-    return todo;
+    const result = { id: updatedTodo._id, content: updatedTodo.content };
+    if (updatedTodo.state) {
+      result.state = updatedTodo.state;
+    }
+
+    return result;
   }
 
   async clear() {

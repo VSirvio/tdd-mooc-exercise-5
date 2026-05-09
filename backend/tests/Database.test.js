@@ -88,4 +88,11 @@ describe('Database', () => {
     const updatedTodo = await todoRepository.update({ id: createdTodo.id.toString(), content: editedTodoContent });
     expect(updatedTodo).not.toBeNull();
   });
+
+  test("todo's completed state can be edited", async () => {
+    const todoContent = 'Walk the cat';
+    const createdTodo = await todoRepository.create({ content: todoContent });
+    const updatedTodo = await todoRepository.update({ id: createdTodo.id, state: 'completed' });
+    expect(updatedTodo).toEqual({ id: createdTodo.id, content: todoContent, state: 'completed' });
+  });
 });

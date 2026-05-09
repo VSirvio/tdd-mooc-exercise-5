@@ -7,7 +7,7 @@ export class DbTestHelper {
 
   async fetchTodoFromDb(id) {
     const fetchedTodo = await this.#todosCollection.findOne({ _id: id });
-    return { id: fetchedTodo._id, content: fetchedTodo.content };
+    return { id: fetchedTodo._id, content: fetchedTodo.content, state: fetchedTodo.state };
   }
 
   async resetDb() {
