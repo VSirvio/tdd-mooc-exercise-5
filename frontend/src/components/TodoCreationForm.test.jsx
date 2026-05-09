@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import TodoCreationForm from './TodoCreationForm.jsx';
 
 describe('TodoCreationForm', () => {
+  let user;
   beforeEach(() => {
   });
 
