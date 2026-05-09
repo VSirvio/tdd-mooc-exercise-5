@@ -46,4 +46,8 @@ describe('Todo service', () => {
     expect(requestBody).toEqual(newTodoData);
     expect(createdTodo).toEqual(todo);
   });
+
+  test('can edit a todo', async () => {
+    await todoService.update();
+  });
 });
