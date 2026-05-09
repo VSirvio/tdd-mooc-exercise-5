@@ -10,11 +10,11 @@ describe('TodoCreationForm', () => {
     user = userEvent.setup();
 
     handler = vi.fn();
+
+    render(<TodoCreationForm handler={handler} />);
   });
 
   test('can submit new todo', async () => {
-    render(<TodoCreationForm handler={handler} />);
-
     const inputField = screen.getByPlaceholderText('Write a new todo here');
     const createButton = screen.getByText('Create');
 
