@@ -172,4 +172,30 @@ describe('App', () => {
 
     expect(TodoEditForm.mock.calls[0][0].content).toBe(todo.content);
   });
+
+  test('refreshes the todo list after editing a todo', async () => {
+    const todoEditData = { id: '69ff8e937b5ddc9a44e96940', content: 'Water the flowers' };
+
+    let editFormVisited = false;
+    TodoList.mockImplementation(({ editTodo }) => {
+      useEffect(() => {
+        if (!editFormVisited) {
+          editTodo(todoEditData.id);
+        }
+      }, []);
+    });
+
+    TodoEditForm.mockImplementation(({ handler }) => {
+      useEffect(() => {
+        editFormVisited = true;
+        handler(todoEditData.content);
+      }, []);
+    });
+
+    await act(async () => {
+      render(<App todoService={todoService} />);
+    });
+
+    expect(todoService.fetchAll).toHaveBeenCalledTimes(2);
+  });
 });

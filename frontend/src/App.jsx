@@ -20,6 +20,7 @@ const App = ({ todoService }) => {
   const sendTodoEdit = async editedContent => {
     await todoService.update({ id: editedTodoId, content: editedContent });
     setEditedTodoId(null);
+    setTodos(await todoService.fetchAll());
   };
 
   useEffect(() => {
