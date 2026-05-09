@@ -18,8 +18,6 @@ const App = ({ todoService }) => {
 
       const fetchedTodos = await todoService.fetchAll();
       setTodos(fetchedTodos);
-
-      const fetchedTodo = fetchedTodos.find(todo => todo.id === createdTodo.id);
     };
     fetchData();
   }, []);
