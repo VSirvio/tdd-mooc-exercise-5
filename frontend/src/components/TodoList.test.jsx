@@ -50,5 +50,8 @@ describe('TodoList', () => {
     render(<TodoList todos={todos} completeTodo={completeTodo} />);
 
     const completeButtons = screen.getAllByRole('button', { name: 'Complete' });
+    await user.click(completeButtons[1]);
+
+    expect(completeTodo).toHaveBeenCalledExactlyOnceWith(todos[1].id);
   });
 });
