@@ -58,11 +58,6 @@ describe('Todo service', () => {
         requestContentType = request.headers.get('Content-Type');
         return HttpResponse.json(todoEditData);
       }),
-      http.put(API_URL, async ({ request }) => {
-        requestBody = await request.clone().json();
-        requestContentType = request.headers.get('Content-Type');
-        return HttpResponse.json(todoEditData);
-      })
     );
 
     const editedTodo = await todoService.update(todoEditData);
