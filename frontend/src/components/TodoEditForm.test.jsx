@@ -7,6 +7,7 @@ describe('TodoEditForm', () => {
   const origTodoContent = 'Do housework';
   let user;
   let handler;
+  let inputField;
   beforeEach(() => {
     user = userEvent.setup();
 
