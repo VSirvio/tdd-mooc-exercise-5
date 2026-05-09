@@ -5,7 +5,7 @@ services:
   backend:
     image: tdd-mooc-exercise-5-backend
     build: backend
-    command: npm start
+    command: npm run start:testingmode
     volumes:
       - ./backend:/app
       - node_modules_backend:/app/node_modules

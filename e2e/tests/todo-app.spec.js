@@ -1,6 +1,22 @@
-import { test, describe, expect } from '@playwright/test';
+import {
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  request,
+  test,
+} from '@playwright/test';
 
 describe('Todo App', () => {
+  beforeAll(async () => {
+    const api = await request.newContext();
+    await api.post('http://localhost:5173/api/testing/reset');
+  });
+
+  afterEach(async ({ page, request }) => {
+    await request.post('http://localhost:5173/api/testing/reset');
+  });
+
   test('contains the message from the database', async ({ page }) => {
     await page.goto('http://localhost:5173');
 

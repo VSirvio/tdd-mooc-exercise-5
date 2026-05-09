@@ -6,11 +6,13 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
+    "start:testingmode": "cross-env NODE_ENV=test node src/index.js",
     "test": "vitest run",
     "autotest": "vitest watch",
     "tcr": "node tcr.js"
   },
   "dependencies": {
+    "cross-env": "^10.1.0",
     "express": "^5.2.1",
     "mongodb": "^7.2.0"
   },
