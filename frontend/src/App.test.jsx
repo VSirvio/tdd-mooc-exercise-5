@@ -35,7 +35,7 @@ describe('App', () => {
       render(<App todoService={todoService} />);
     });
 
-    expect(TodoList).toHaveBeenCalledWith({ todos: [todo] }, undefined);
+    expect(TodoList.mock.calls[1][0].todos).toContainEqual(todo);
   });
 
   test('displays todo creation form', async () => {
@@ -70,5 +70,19 @@ describe('App', () => {
 
     expect(newTodoCreated).toBe(true);
     expect(todoService.fetchAll).toHaveBeenCalledTimes(2);
+  });
+
+  test('opens the edit view when a todo is selected for editing', async () => {
+    const todoId = '69ff8e937b5ddc9a44e96940';
+
+    TodoList.mockImplementation(({ editTodo }) => {
+      useEffect(() => {
+        editTodo(todoId);
+      }, []);
+    });
+
+    await act(async () => {
+      render(<App todoService={todoService} />);
+    });
   });
 });

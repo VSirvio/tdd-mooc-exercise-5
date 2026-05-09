@@ -10,6 +10,9 @@ const App = ({ todoService }) => {
     setTodos(await todoService.fetchAll());
   };
 
+  const editTodo = () => {
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       setTodos(await todoService.fetchAll());
@@ -20,7 +23,7 @@ const App = ({ todoService }) => {
   return (
     <>
       <h1>Todos</h1>
-      <TodoList todos={todos} />
+      <TodoList todos={todos} editTodo={editTodo} />
       <TodoCreationForm handler={createTodo} />
     </>
   );
