@@ -9,6 +9,7 @@ import TodoEditForm from './components/TodoEditForm.jsx';
 const todoService = {
   fetchAll: vi.fn(),
   create: vi.fn(),
+  update: vi.fn(),
 };
 
 vi.mock(import('./components/TodoList.jsx'), () => ({ default: vi.fn() }));
@@ -126,5 +127,31 @@ describe('App', () => {
 
     expect(screen.queryByText(todoEditFormText)).not.toBeInTheDocument();
     expect(screen.getByText(todoListText)).toBeVisible();
+  });
+
+  test('edits a todo when an edit is initiated in the edit view', async () => {
+    const todoEditData = { id: '69ff8e937b5ddc9a44e96940', content: 'Water the flowers' };
+
+    let editFormVisited = false;
+    TodoList.mockImplementation(({ editTodo }) => {
+      useEffect(() => {
+        if (!editFormVisited) {
+          editTodo(todoEditData.id);
+        }
+      }, []);
+    });
+
+    TodoEditForm.mockImplementation(({ handler }) => {
+      useEffect(() => {
+        editFormVisited = true;
+        handler(todoEditData.content);
+      }, []);
+    });
+
+    await act(async () => {
+      render(<App todoService={todoService} />);
+    });
+
+    expect(todoService.update).toHaveBeenCalledExactlyOnceWith(todoEditData);
   });
 });

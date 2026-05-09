@@ -16,7 +16,8 @@ const App = ({ todoService }) => {
     setEditedTodoId(todoId);
   };
 
-  const sendTodoEdit = () => {
+  const sendTodoEdit = async editedContent => {
+    await todoService.update({ id: editedTodoId, content: editedContent });
     setEditedTodoId(null);
   };
 
