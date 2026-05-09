@@ -1,9 +1,11 @@
 import { describe, test } from 'vitest';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import TodoEditForm from './TodoEditForm.jsx';
 
 describe('TodoEditForm', () => {
   test('can submit an edit for a todo', () => {
     render(<TodoEditForm />);
+
+    const inputField = screen.getByRole('textbox');
   });
 });
