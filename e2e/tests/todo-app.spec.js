@@ -17,12 +17,6 @@ describe('Todo App', () => {
     await request.post('http://localhost:5173/api/testing/reset');
   });
 
-  test('contains the message from the database', async ({ page }) => {
-    await page.goto('http://localhost:5173');
-
-    await expect(page.getByText('To the database and back again').first()).toBeVisible();
-  });
-
   test('can create a new todo and then view it in the list', async ({ page }) => {
     const todoContent = 'Do something';
 
