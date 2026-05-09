@@ -17,6 +17,7 @@ describe('TodoEditForm', () => {
     render(<TodoEditForm content={origTodoContent} handler={handler} />);
 
     inputField = screen.getByRole('textbox');
+    saveButton = screen.getByRole('button', { name: 'Save' });
   });
 
   test('can submit an edit for a todo', async () => {
