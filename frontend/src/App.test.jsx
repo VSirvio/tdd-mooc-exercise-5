@@ -39,15 +39,6 @@ describe('App', () => {
   });
 
   test('displays todo creation form', async () => {
-    const todoId = '69fcb2f2de7eee505d6378d1';
-
-    let todoContent;
-    todoService.create.mockImplementationOnce(todo => {
-      todoContent = todo.content;
-      return { id: todoId, content: todoContent };
-    });
-    todoService.fetchAll.mockReturnValueOnce([{ id: todoId, content: todoContent }]);
-
     const todoCreationFormText = 'This text is in the TodoCreationForm component';
     TodoCreationForm.mockReturnValue(<div>{todoCreationFormText}</div>);
 
