@@ -57,4 +57,10 @@ describe('App', () => {
     await request(app).post('/api/todos').send({ content: 7 }).expect(400);
     await request(app).post('/api/todos').send({ content: 'a'.repeat(1000) }).expect(400);
   });
+
+  test('can edit a todo', async () => {
+    await request(app)
+      .put('/api/todos')
+      .expect(200);
+  });
 });
