@@ -12,8 +12,7 @@ const App = ({ todoService }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const fetchedTodos = await todoService.fetchAll();
-      setTodos(fetchedTodos);
+      setTodos(await todoService.fetchAll());
     };
     fetchData();
   }, []);
