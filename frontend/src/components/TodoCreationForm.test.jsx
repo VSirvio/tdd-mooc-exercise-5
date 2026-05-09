@@ -1,5 +1,5 @@
 import { beforeEach, describe, test, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import TodoCreationForm from './TodoCreationForm.jsx';
 
@@ -22,12 +22,12 @@ describe('TodoCreationForm', () => {
   test('can submit new todo', async () => {
     const todoContent = 'Go jogging';
 
-    await user.type(inputField, todoContent);
+    fireEvent.change(inputField, { target: { value: todoContent } });
     await user.click(createButton);
 
     const todoContent2 = 'Go fill up the car';
 
-    await user.type(inputField, todoContent2);
+    fireEvent.change(inputField, { target: { value: todoContent2 } });
     await user.click(createButton);
 
     expect(handler).toHaveBeenCalledTimes(2);
