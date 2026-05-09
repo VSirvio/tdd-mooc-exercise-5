@@ -51,18 +51,12 @@ describe('App', () => {
   });
 
   test('creates a new todo when the todo creation form is submitted', async () => {
-    const todoId = '69fcb2f2de7eee505d6378d1';
-
     const newTodoContent = 'Practice playing piano';
 
-    let todoContent;
     let newTodoCreated = false;
     todoService.create.mockImplementation(async todo => {
-      newTodoCreated = newTodoCreated || todo.content === newTodoContent;
-      todoContent = todo.content;
-      return { id: todoId, content: todoContent };
+      newTodoCreated = todo.content === newTodoContent;
     });
-    todoService.fetchAll.mockReturnValue([{ id: todoId, content: todoContent }]);
 
     TodoCreationForm.mockImplementation(({ handler }) => {
       useEffect(() => {
