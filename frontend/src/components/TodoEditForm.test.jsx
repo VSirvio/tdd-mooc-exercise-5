@@ -1,5 +1,5 @@
 import { beforeEach, describe, test, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import TodoEditForm from './TodoEditForm.jsx';
 
@@ -21,8 +21,7 @@ describe('TodoEditForm', () => {
 
     const todoContent = 'Do homework';
 
-    await user.clear(inputField);
-    await user.type(inputField, todoContent);
+    fireEvent.change(inputField, { target: { value: todoContent } });
     await user.click(saveButton);
 
     expect(handler).toHaveBeenCalledExactlyOnceWith(todoContent);
