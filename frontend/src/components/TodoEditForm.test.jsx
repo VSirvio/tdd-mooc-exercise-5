@@ -8,6 +8,8 @@ describe('TodoEditForm', () => {
   let handler;
   beforeEach(() => {
     user = userEvent.setup();
+
+    handler = vi.fn();
   });
 
   test('can submit an edit for a todo', async () => {
