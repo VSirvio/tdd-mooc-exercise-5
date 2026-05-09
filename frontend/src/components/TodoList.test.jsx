@@ -54,4 +54,16 @@ describe('TodoList', () => {
 
     expect(completeTodo).toHaveBeenCalledExactlyOnceWith(todos[1].id);
   });
+
+  test('strikes through the todos that have been completed', async () => {
+    const todos = [
+      { id: '69fd8a21f5342f5fb8a8fa82', content: 'Take out the trash' },
+      { id: '69fd8a874e0072ca38992d4a', content: 'Pay the bills', state: 'completed' },
+    ];
+
+    render(<TodoList todos={todos} />);
+
+    const element = screen.getByText(todos[1].content);
+    expect(element).toHaveStyle({ textDecoration: 'line-through' });
+  });
 });
