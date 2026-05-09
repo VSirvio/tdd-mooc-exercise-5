@@ -28,6 +28,13 @@ export const createTodosRouter = todoRepository => {
   todosRouter.put('/', async (req, res) => {
     const todoEditData = req.body;
 
+    if (
+      typeof todoEditData !== 'object'
+    ) {
+      res.status(400).json({ error: 'Invalid todo data' });
+      return
+    }
+
     const editedTodo = await todoRepository.update(todoEditData);
     if (editedTodo === null) {
       res.sendStatus(404);

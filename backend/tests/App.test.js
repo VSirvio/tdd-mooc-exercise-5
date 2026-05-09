@@ -77,4 +77,8 @@ describe('App', () => {
     todoRepository.update.mockReturnValueOnce(null);
     await request(app).put('/api/todos').send(editedTodo).expect(404);
   });
+
+  test('responds with error when trying to edit a todo using invalid data', async () => {
+    await request(app).put('/api/todos').send('a').expect(400);
+  });
 });
