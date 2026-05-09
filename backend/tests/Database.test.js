@@ -66,6 +66,9 @@ describe('Database', () => {
     const todoContent = 'Walk the cat';
     const editedTodoContent = 'Walk the dog';
     const createdTodo = await todoRepository.create({ content: todoContent });
-    await todoRepository.update();
+    await todoRepository.update({ id: createdTodo.id, content: editedTodoContent });
+    const fetchedTodos = await todoRepository.fetchAll();
+    expect(fetchedTodos.find(todo => todo.id.equals(createdTodo.id)).content)
+      .toBe(editedTodoContent);
   });
 });
