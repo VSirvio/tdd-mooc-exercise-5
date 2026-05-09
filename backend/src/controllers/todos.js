@@ -34,7 +34,8 @@ export const createTodosRouter = todoRepository => {
       todoEditData.content.length === 0 ||
       todoEditData.content.length > 100 ||
       typeof todoEditData.id !== 'string' ||
-      todoEditData.id.length > 50
+      todoEditData.id.length > 50 ||
+      ![undefined, 'completed'].includes(todoEditData.state)
     ) {
       res.status(400).json({ error: 'Invalid todo data' });
       return

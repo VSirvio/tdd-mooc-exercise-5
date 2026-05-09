@@ -79,6 +79,7 @@ describe('App', () => {
   });
 
   test('responds with error when trying to edit a todo using invalid data', async () => {
+    const id = '69ffb554be7974dd3befd1cc';
     const content = 'Do something';
     await request(app).patch('/api/todos').send('a').expect(400);
     await request(app).patch('/api/todos').send({}).expect(400);
@@ -86,5 +87,6 @@ describe('App', () => {
     await request(app).patch('/api/todos').send({ content: 'a'.repeat(1000) }).expect(400);
     await request(app).patch('/api/todos').send({ content, id: 76 }).expect(400);
     await request(app).patch('/api/todos').send({ content, id: 'a'.repeat(100) }).expect(400);
+    await request(app).patch('/api/todos').send({ content, id, state: 'something' }).expect(400);
   });
 });
