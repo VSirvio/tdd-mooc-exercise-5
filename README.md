@@ -6,7 +6,8 @@ My solution to exercise 5 in the Test-Driven Development MOOC course. It is a si
 
 ## Features
 
-* *TBA*
+* Add a to-do item
+* Other features will be implemented over time
 
 ## Technologies used
 
