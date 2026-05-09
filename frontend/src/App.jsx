@@ -28,7 +28,6 @@ const App = ({ todoService }) => {
   return (
     <>
       <h1>Todos</h1>
-      <p>{receivedMsg}</p>
       <TodoList todos={todos} />
       <TodoCreationForm handler={createTodo} />
     </>
