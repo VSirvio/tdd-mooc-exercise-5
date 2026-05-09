@@ -48,6 +48,9 @@ describe('Todo service', () => {
   });
 
   test('can edit a todo', async () => {
-    await todoService.update();
+    const todoEditData = { id: '69ff230d6dc59b0a6816edf0', content: 'Buy potatoes' };
+
+    const editedTodo = await todoService.update(todoEditData);
+    expect(editedTodo).toEqual(todoEditData);
   });
 });
