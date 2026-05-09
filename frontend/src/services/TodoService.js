@@ -22,6 +22,10 @@ export class TodoService {
   }
 
   async update(todoEditData) {
+    await fetch(this.#apiUrl, {
+      method: 'PUT',
+      body: JSON.stringify(todoEditData),
+    });
     return todoEditData;
   }
 }

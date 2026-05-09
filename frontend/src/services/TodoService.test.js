@@ -50,7 +50,16 @@ describe('Todo service', () => {
   test('can edit a todo', async () => {
     const todoEditData = { id: '69ff230d6dc59b0a6816edf0', content: 'Buy potatoes' };
 
+    let requestBody;
+    mockServer.use(
+      http.put(API_URL, async ({ request }) => {
+        requestBody = await request.clone().json();
+        return HttpResponse.json(todoEditData);
+      })
+    );
+
     const editedTodo = await todoService.update(todoEditData);
     expect(editedTodo).toEqual(todoEditData);
+    expect(requestBody).toEqual(todoEditData);
   });
 });
