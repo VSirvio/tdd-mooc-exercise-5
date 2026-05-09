@@ -66,7 +66,8 @@ describe('Database', () => {
     const todoContent = 'Walk the cat';
     const editedTodoContent = 'Walk the dog';
     const createdTodo = await todoRepository.create({ content: todoContent });
-    await todoRepository.update({ id: createdTodo.id, content: editedTodoContent });
+    const updatedTodo = await todoRepository.update({ id: createdTodo.id, content: editedTodoContent });
+    expect(updatedTodo).toEqual({ id: createdTodo.id, content: editedTodoContent });
     const fetchedTodos = await todoRepository.fetchAll();
     expect(fetchedTodos.find(todo => todo.id.equals(createdTodo.id)).content)
       .toBe(editedTodoContent);

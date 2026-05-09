@@ -19,6 +19,7 @@ export class TodoRepository {
     const filter = { _id: todo.id };
     const updateDoc = { $set: { content: todo.content } };
     await this.#todosCollection.updateOne(filter, updateDoc);
+    return todo;
   }
 
   async clear() {
