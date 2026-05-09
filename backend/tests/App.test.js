@@ -5,6 +5,7 @@ import { createApp } from '../src/app.js';
 const MockTodoRepository = vi.fn(class {
   fetchAll = vi.fn()
   create = vi.fn()
+  update = vi.fn()
 });
 
 const todoRepository = new MockTodoRepository();
@@ -60,6 +61,7 @@ describe('App', () => {
 
   test('can edit a todo', async () => {
     const editedTodo = { id: '69ff129e6dc59b0a6816edee', content: 'Book the trip to Rome' };
+    todoRepository.update.mockReturnValueOnce(editedTodo);
 
     const response = await request(app)
       .put('/api/todos')
@@ -67,5 +69,6 @@ describe('App', () => {
       .expect(200);
 
     expect(response.body).toEqual(editedTodo);
+    expect(todoRepository.update).toHaveBeenCalledExactlyOnceWith(editedTodo);
   });
 });
