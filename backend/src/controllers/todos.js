@@ -27,7 +27,13 @@ export const createTodosRouter = todoRepository => {
 
   todosRouter.put('/', async (req, res) => {
     const todoEditData = req.body;
-    await todoRepository.update(todoEditData);
+
+    const editedTodo = await todoRepository.update(todoEditData);
+    if (editedTodo === null) {
+      res.sendStatus(404);
+      return;
+    }
+
     res.send(todoEditData);
   });
 

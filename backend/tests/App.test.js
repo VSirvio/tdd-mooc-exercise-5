@@ -71,4 +71,10 @@ describe('App', () => {
     expect(response.body).toEqual(editedTodo);
     expect(todoRepository.update).toHaveBeenCalledExactlyOnceWith(editedTodo);
   });
+
+  test('responds with error when trying to edit a todo that does not exist', async () => {
+    const editedTodo = { id: '69ff1b366dc59b0a6816edef', content: 'Book the trip to Paris' };
+    todoRepository.update.mockReturnValueOnce(null);
+    await request(app).put('/api/todos').send(editedTodo).expect(404);
+  });
 });
