@@ -13,8 +13,6 @@ describe('TodoCreationForm', () => {
   });
 
   test('can submit new todo', async () => {
-    const handler = vi.fn();
-
     render(<TodoCreationForm handler={handler} />);
 
     const inputField = screen.getByPlaceholderText('Write a new todo here');
