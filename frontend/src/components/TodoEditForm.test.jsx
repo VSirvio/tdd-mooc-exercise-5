@@ -5,6 +5,7 @@ import TodoEditForm from './TodoEditForm.jsx';
 
 describe('TodoEditForm', () => {
   let user;
+  let handler;
   beforeEach(() => {
     user = userEvent.setup();
   });
