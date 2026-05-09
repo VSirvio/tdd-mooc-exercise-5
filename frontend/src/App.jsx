@@ -13,8 +13,6 @@ const App = ({ todoService }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const todo = { content: 'To the database and back again' };
-
       const fetchedTodos = await todoService.fetchAll();
       setTodos(fetchedTodos);
     };
