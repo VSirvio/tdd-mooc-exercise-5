@@ -4,7 +4,6 @@ import TodoList from './components/TodoList.jsx';
 
 const App = ({ todoService }) => {
   const [todos, setTodos] = useState([]);
-  const [receivedMsg, setReceivedMsg] = useState('');
 
   const createTodo = async content => {
     const createdTodo = await todoService.create({ content });
