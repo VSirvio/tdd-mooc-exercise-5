@@ -39,4 +39,10 @@ describe('TodoCreationForm', () => {
     await user.click(createButton);
     expect(inputField).toBeInvalid();
   });
+
+  test('does not accept too long content for todo', async () => {
+    await user.click(inputField);
+    await user.paste('a'.repeat(1000));
+    expect(inputField.value.length).toBeLessThan(1000);
+  });
 });
