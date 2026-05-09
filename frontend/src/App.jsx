@@ -20,7 +20,6 @@ const App = ({ todoService }) => {
       setTodos(fetchedTodos);
 
       const fetchedTodo = fetchedTodos.find(todo => todo.id === createdTodo.id);
-      setReceivedMsg(fetchedTodo.content);
     };
     fetchData();
   }, []);
