@@ -7,6 +7,7 @@ describe('TodoCreationForm', () => {
   let user;
   let handler;
   let inputField;
+  let createButton;
   beforeEach(() => {
     user = userEvent.setup();
 
