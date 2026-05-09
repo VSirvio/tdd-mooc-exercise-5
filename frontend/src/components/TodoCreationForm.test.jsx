@@ -20,8 +20,6 @@ describe('TodoCreationForm', () => {
   });
 
   test('can submit new todo', async () => {
-    const createButton = screen.getByText('Create');
-
     const todoContent = 'Go jogging';
 
     await user.type(inputField, todoContent);
