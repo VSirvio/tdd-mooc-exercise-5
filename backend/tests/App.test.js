@@ -75,7 +75,7 @@ describe('App', () => {
   test('responds with error when trying to edit a todo that does not exist', async () => {
     const editedTodo = { id: '69ff1b366dc59b0a6816edef', content: 'Book the trip to Paris' };
     todoRepository.update.mockReturnValueOnce(null);
-    await request(app).put('/api/todos').send(editedTodo).expect(404);
+    await request(app).patch('/api/todos').send(editedTodo).expect(404);
   });
 
   test('responds with error when trying to edit a todo using invalid data', async () => {
