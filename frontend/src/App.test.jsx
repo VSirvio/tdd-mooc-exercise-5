@@ -38,7 +38,7 @@ describe('App', () => {
       render(<App todoService={todoService} />);
     });
 
-    expect(TodoList.mock.calls[1][0].todos).toContainEqual(todo);
+    expect(TodoList.mock.calls[0][0].todos).toContainEqual(todo);
   });
 
   test('displays todo creation form', async () => {
@@ -153,5 +153,23 @@ describe('App', () => {
     });
 
     expect(todoService.update).toHaveBeenCalledExactlyOnceWith(todoEditData);
+  });
+
+  test('passes the original content of the todo to the edit view', async () => {
+    const todo = { id: '69ff8e937b5ddc9a44e96940', content: 'Water the flowers' };
+
+    todoService.fetchAll.mockReturnValue([todo]);
+
+    TodoList.mockImplementation(({ editTodo }) => {
+      useEffect(() => {
+          editTodo(todo.id);
+      }, []);
+    });
+
+    await act(async () => {
+      render(<App todoService={todoService} />);
+    });
+
+    expect(TodoEditForm.mock.calls[0][0].content).toBe(todo.content);
   });
 });

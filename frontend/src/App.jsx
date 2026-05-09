@@ -6,6 +6,7 @@ import TodoList from './components/TodoList.jsx';
 const App = ({ todoService }) => {
   const [todos, setTodos] = useState([]);
   const [editedTodoId, setEditedTodoId] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const createTodo = async content => {
     await todoService.create({ content });
@@ -24,18 +25,20 @@ const App = ({ todoService }) => {
   useEffect(() => {
     const fetchData = async () => {
       setTodos(await todoService.fetchAll());
+      setIsLoading(false);
     };
     fetchData();
   }, []);
 
   if (editedTodoId !== null) {
-    return <TodoEditForm handler={sendTodoEdit} />;
+    const content = todos?.find(todo => todo.id === editedTodoId)?.content || '';
+    return <TodoEditForm content={content} handler={sendTodoEdit} />;
   }
 
   return (
     <>
       <h1>Todos</h1>
-      <TodoList todos={todos} editTodo={editTodo} />
+      {isLoading || <TodoList todos={todos} editTodo={editTodo} />}
       <TodoCreationForm handler={createTodo} />
     </>
   );
