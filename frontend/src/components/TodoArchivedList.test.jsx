@@ -18,5 +18,6 @@ describe('TodoArchivedList', () => {
     render(<TodoArchivedList items={todos} />);
 
     expect(screen.getByText(todos[0].content)).toBeVisible();
+    expect(screen.getByText(todos[1].content)).toBeVisible();
   });
 });
