@@ -29,6 +29,14 @@ const App = ({ todoService }) => {
     setTodos(await todoService.fetchAll());
   };
 
+  const archiveCompleted = async () => {
+    for (const todo of todos) {
+      if (todo.state === 'completed') {
+        await todoService.update({ id: todo.id, state: 'archived' });
+      }
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       setTodos(await todoService.fetchAll());
@@ -45,7 +53,7 @@ const App = ({ todoService }) => {
   return (
     <>
       <h1>Todos</h1>
-      <button>Archive all completed items</button>
+      <button onClick={archiveCompleted}>Archive all completed items</button>
       {isLoading || <TodoList todos={todos} editTodo={editTodo} completeTodo={completeTodo} />}
       <TodoCreationForm handler={createTodo} />
     </>

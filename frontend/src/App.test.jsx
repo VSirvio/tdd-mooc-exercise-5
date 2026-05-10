@@ -1,5 +1,6 @@
 import { describe, test, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { act, useEffect } from 'react';
 import App from './App.jsx';
 import TodoList from './components/TodoList.jsx';
@@ -230,10 +231,23 @@ describe('App', () => {
   });
 
   test('archives all completed todos when the "Archive all completed items" button is pressed', async () => {
+    const todos = [
+      { id: '69fd8a21f5342f5fb8a8fa82', content: 'Take out the trash' },
+      { id: '69fd8a874e0072ca38992d4a', content: 'Pay the bills', state: 'completed' },
+    ];
+
+    const user = userEvent.setup();
+
+    todoService.fetchAll.mockReturnValue(todos);
+
     await act(async () => {
       render(<App todoService={todoService} />);
     });
 
     const archiveButton = screen.getByRole('button', { name: 'Archive all completed items' });
+    await user.click(archiveButton);
+
+    expect(todoService.update)
+      .toHaveBeenCalledExactlyOnceWith({ id: todos[1].id, state: 'archived' });
   });
 });
