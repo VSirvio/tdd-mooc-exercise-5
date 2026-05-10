@@ -228,4 +228,12 @@ describe('App', () => {
     expect(todoService.update)
       .toHaveBeenNthCalledWith(2, { id: todo.id, state: 'uncompleted' });
   });
+
+  test('archives all completed todos when the "Archive all completed items" button is pressed', async () => {
+    await act(async () => {
+      render(<App todoService={todoService} />);
+    });
+
+    const archiveButton = screen.getByRole('button', { name: 'Archive all completed items' });
+  });
 });

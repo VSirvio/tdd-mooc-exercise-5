@@ -45,6 +45,7 @@ const App = ({ todoService }) => {
   return (
     <>
       <h1>Todos</h1>
+      <button>Archive all completed items</button>
       {isLoading || <TodoList todos={todos} editTodo={editTodo} completeTodo={completeTodo} />}
       <TodoCreationForm handler={createTodo} />
     </>
