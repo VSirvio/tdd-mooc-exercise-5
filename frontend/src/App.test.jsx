@@ -200,19 +200,31 @@ describe('App', () => {
   });
 
   test('toggles the completed state of a todo when its "Complete" button is pressed', async () => {
-    const todoId = '69ff8e937b5ddc9a44e96940';
+    const todo = { id: '69ff8e937b5ddc9a44e96940', content: 'Water the flowers' };
 
     TodoList.mockImplementation(({ completeTodo }) => {
       useEffect(() => {
-        completeTodo(todoId);
+        completeTodo(todo.id);
       }, []);
     });
+
+    todoService.fetchAll.mockReturnValue([todo]);
 
     await act(async () => {
       render(<App todoService={todoService} />);
     });
 
     expect(todoService.update)
-      .toHaveBeenCalledExactlyOnceWith({ id: todoId, state: 'completed' });
+      .toHaveBeenCalledExactlyOnceWith({ id: todo.id, state: 'completed' });
+
+    todoService.fetchAll.mockReturnValue([{ ...todo, state: 'completed' }]);
+
+    await act(async () => {
+      render(<App todoService={todoService} />);
+    });
+
+    expect(todoService.update).toHaveBeenCalledTimes(2);
+    expect(todoService.update)
+      .toHaveBeenNthCalledWith(2, { id: todo.id, state: undefined });
   });
 });

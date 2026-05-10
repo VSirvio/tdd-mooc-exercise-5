@@ -24,7 +24,8 @@ const App = ({ todoService }) => {
   };
 
   const completeTodo = async todoId => {
-    await todoService.update({ id: todoId, state: 'completed' });
+    const state = todos.find(todo => todo.id === todoId).state;
+    await todoService.update({ id: todoId, state: state ? undefined : 'completed' });
   };
 
   useEffect(() => {
