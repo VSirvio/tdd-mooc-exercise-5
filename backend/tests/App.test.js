@@ -89,4 +89,9 @@ describe('App', () => {
     await request(app).patch('/api/todos').send({ content, id: 'a'.repeat(100) }).expect(400);
     await request(app).patch('/api/todos').send({ content, id, state: 'something' }).expect(400);
   });
+
+  test('accepts edits that have "state" but not "content"', async () => {
+    const id = '69ffb554be7974dd3befd1cc';
+    await request(app).patch('/api/todos').send({ id, state: 'completed' }).expect(200);
+  });
 });

@@ -30,9 +30,12 @@ export const createTodosRouter = todoRepository => {
 
     if (
       typeof todoEditData !== 'object' ||
-      typeof todoEditData.content !== 'string' ||
-      todoEditData.content.length === 0 ||
-      todoEditData.content.length > 100 ||
+      (todoEditData.content === undefined && todoEditData.state === undefined) ||
+      (todoEditData.content !== undefined && (
+        typeof todoEditData.content !== 'string' ||
+        todoEditData.content.length === 0 ||
+        todoEditData.content.length > 100
+      )) ||
       typeof todoEditData.id !== 'string' ||
       todoEditData.id.length > 50 ||
       ![undefined, 'completed'].includes(todoEditData.state)
