@@ -216,6 +216,7 @@ describe('App', () => {
 
     expect(todoService.update)
       .toHaveBeenCalledExactlyOnceWith({ id: todo.id, state: 'completed' });
+    expect(todoService.fetchAll).toHaveBeenCalledTimes(2);
 
     todoService.fetchAll.mockReturnValue([{ ...todo, state: 'completed' }]);
 
