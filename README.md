@@ -1,6 +1,6 @@
 # tdd-mooc-exercise-5
 
-My solution to exercise 5 in the Test-Driven Development MOOC course. It is a simple To-Do List web application developed using Test-Driven Development.
+My solution to exercise 5 in the Test-Driven Development [MOOC course](https://tdd.mooc.fi). It is a simple To-Do List web application developed using Test-Driven Development.
 
 ## Features
 
