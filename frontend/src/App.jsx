@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import TodoArchivedList from './components/TodoArchivedList.jsx';
 import TodoCreationForm from './components/TodoCreationForm.jsx';
 import TodoEditForm from './components/TodoEditForm.jsx';
 import TodoList from './components/TodoList.jsx';
@@ -57,6 +58,7 @@ const App = ({ todoService }) => {
       <button onClick={archiveCompleted}>Archive all completed items</button>
       {isLoading || <TodoList todos={todos} editTodo={editTodo} completeTodo={completeTodo} />}
       <TodoCreationForm handler={createTodo} />
+      <TodoArchivedList />
     </>
   );
 };

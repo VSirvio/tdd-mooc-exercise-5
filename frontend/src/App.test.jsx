@@ -6,6 +6,7 @@ import App from './App.jsx';
 import TodoList from './components/TodoList.jsx';
 import TodoCreationForm from './components/TodoCreationForm.jsx';
 import TodoEditForm from './components/TodoEditForm.jsx';
+import TodoArchivedList from './components/TodoArchivedList.jsx';
 
 const todoService = {
   fetchAll: vi.fn(),
@@ -16,6 +17,7 @@ const todoService = {
 vi.mock(import('./components/TodoList.jsx'), () => ({ default: vi.fn() }));
 vi.mock(import('./components/TodoCreationForm.jsx'), () => ({ default: vi.fn() }));
 vi.mock(import('./components/TodoEditForm.jsx'), () => ({ default: vi.fn() }));
+vi.mock(import('./components/TodoArchivedList.jsx'), () => ({ default: vi.fn() }));
 
 describe('App', () => {
   test('displays todo list', async () => {
@@ -250,5 +252,16 @@ describe('App', () => {
     expect(todoService.update)
       .toHaveBeenCalledExactlyOnceWith({ id: todos[1].id, state: 'archived' });
     expect(todoService.fetchAll).toHaveBeenCalledTimes(2);
+  });
+
+  test('displays a list of archived todos', async () => {
+    const todoArchivedListText = 'This text is in the TodoArchivedList component';
+    TodoArchivedList.mockReturnValue(<div>{todoArchivedListText}</div>);
+
+    await act(async () => {
+      render(<App todoService={todoService} />);
+    });
+
+    expect(screen.getByText(todoArchivedListText)).toBeVisible();
   });
 });
