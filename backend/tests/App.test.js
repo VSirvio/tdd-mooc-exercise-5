@@ -95,4 +95,9 @@ describe('App', () => {
     await request(app).patch('/api/todos').send({ id, state: 'completed' }).expect(200);
     await request(app).patch('/api/todos').send({ id, state: 'uncompleted' }).expect(200);
   });
+
+  test('accepts the state "archived" when editing a todo', async () => {
+    const id = '69ffb554be7974dd3befd1cc';
+    await request(app).patch('/api/todos').send({ id, state: 'archived' }).expect(200);
+  });
 });
