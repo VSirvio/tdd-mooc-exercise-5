@@ -226,6 +226,6 @@ describe('App', () => {
 
     expect(todoService.update).toHaveBeenCalledTimes(2);
     expect(todoService.update)
-      .toHaveBeenNthCalledWith(2, { id: todo.id, state: undefined });
+      .toHaveBeenNthCalledWith(2, { id: todo.id, state: 'uncompleted' });
   });
 });
