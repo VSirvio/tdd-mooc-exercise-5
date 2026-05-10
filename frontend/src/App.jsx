@@ -56,7 +56,10 @@ const App = ({ todoService }) => {
     <>
       <h1>Todos</h1>
       <button onClick={archiveCompleted}>Archive all completed items</button>
-      {isLoading || <TodoList todos={todos} editTodo={editTodo} completeTodo={completeTodo} />}
+      {
+        isLoading ||
+        <TodoList todos={todos} editTodo={editTodo} completeTodo={completeTodo} />
+      }
       <TodoCreationForm handler={createTodo} />
       <TodoArchivedList items={todos?.filter(todo => todo.state === 'archived')} />
     </>
