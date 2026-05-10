@@ -211,5 +211,8 @@ describe('App', () => {
     await act(async () => {
       render(<App todoService={todoService} />);
     });
+
+    expect(todoService.update)
+      .toHaveBeenCalledExactlyOnceWith({ id: todoId, state: 'completed' });
   });
 });

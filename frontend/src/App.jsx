@@ -24,6 +24,7 @@ const App = ({ todoService }) => {
   };
 
   const completeTodo = async todoId => {
+    await todoService.update({ id: todoId, state: 'completed' });
   };
 
   useEffect(() => {
