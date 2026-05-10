@@ -59,7 +59,7 @@ const App = ({ todoService }) => {
       {
         isLoading ||
         <TodoList
-          todos={todos}
+          todos={todos?.filter(todo => todo.state !== 'archived')}
           editTodo={editTodo}
           completeTodo={completeTodo}
         />

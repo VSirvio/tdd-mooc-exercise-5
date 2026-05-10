@@ -279,4 +279,19 @@ describe('App', () => {
 
     expect(TodoArchivedList).toHaveBeenCalledWith({ items: [todos[1]] }, undefined);
   });
+
+  test('displays only unarchived todos in the todo list', async () => {
+    const todos = [
+      { id: '69fd8a21f5342f5fb8a8fa82', content: 'Take out the trash' },
+      { id: '69fd8a874e0072ca38992d4a', content: 'Pay the bills', state: 'archived' },
+    ];
+
+    todoService.fetchAll.mockReturnValue(todos);
+
+    await act(async () => {
+      render(<App todoService={todoService} />);
+    });
+
+    expect(TodoList.mock.calls[0][0].todos).toEqual([todos[0]]);
+  });
 });
