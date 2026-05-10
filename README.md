@@ -15,9 +15,9 @@ My solution to exercise 5 in the Test-Driven Development MOOC course. It is a si
 
 * **Backend:** [Express](https://expressjs.com) / JavaScript
 * **Frontend:** [React](https://react.dev) / JavaScript
-* **Database:** [MongoDB](https://www.mongodb.com)
+* **Database:** [MongoDB](https://www.mongodb.com) (+ [the official MongoDB Node.js driver](https://www.mongodb.com/docs/drivers/node/current))
 * **E2E tests:** [Playwright](https://playwright.dev)
-* **Unit tests:** [Vitest](https://vitest.dev)
+* **Unit tests:** [Vitest](https://vitest.dev) + [supertest](https://github.com/forwardemail/supertest) + [React Testing Library](https://github.com/testing-library/react-testing-library) + [Mock Service Worker](https://mswjs.io)
 
 ## Prerequisites
 
