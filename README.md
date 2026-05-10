@@ -7,7 +7,9 @@ My solution to exercise 5 in the Test-Driven Development MOOC course. It is a si
 ## Features
 
 * Add a to-do item
-* Other features will be implemented over time
+* Rename a to-do item
+* Mark a to-do item completed
+* Archive all completed to-do items
 
 ## Technologies used
 
