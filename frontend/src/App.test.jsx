@@ -264,4 +264,19 @@ describe('App', () => {
 
     expect(screen.getByText(todoArchivedListText)).toBeVisible();
   });
+
+  test('displays only archived todos in the list of archived todos', async () => {
+    const todos = [
+      { id: '69fd8a21f5342f5fb8a8fa82', content: 'Take out the trash' },
+      { id: '69fd8a874e0072ca38992d4a', content: 'Pay the bills', state: 'archived' },
+    ];
+
+    todoService.fetchAll.mockReturnValue(todos);
+
+    await act(async () => {
+      render(<App todoService={todoService} />);
+    });
+
+    expect(TodoArchivedList).toHaveBeenCalledWith({ items: [todos[1]] }, undefined);
+  });
 });
