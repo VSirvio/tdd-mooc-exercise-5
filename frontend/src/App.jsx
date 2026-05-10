@@ -35,6 +35,7 @@ const App = ({ todoService }) => {
         await todoService.update({ id: todo.id, state: 'archived' });
       }
     }
+    setTodos(await todoService.fetchAll());
   };
 
   useEffect(() => {

@@ -249,5 +249,6 @@ describe('App', () => {
 
     expect(todoService.update)
       .toHaveBeenCalledExactlyOnceWith({ id: todos[1].id, state: 'archived' });
+    expect(todoService.fetchAll).toHaveBeenCalledTimes(2);
   });
 });
